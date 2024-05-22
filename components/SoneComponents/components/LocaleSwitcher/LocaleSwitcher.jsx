@@ -22,10 +22,7 @@ const LocaleSwitcher = () => {
   //       return acc;
   //     }, []),
   //   [translations],
-  // );
-
-  console.log("i18n: ", i18n)
-  
+  // );  
   const currentLocale = useRouter().locale;
 
   return (

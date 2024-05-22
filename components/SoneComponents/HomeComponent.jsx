@@ -17,6 +17,9 @@ const HomeComponent = (data) => {
 
   console.log("here is: ", data )
 
+  if (!data.data) {
+    return
+  } 
   const videos = data.data.homeVideos;
   const getRandomInt = (max) => {
     return Math.floor(Math.random() * max);
@@ -40,10 +43,12 @@ const HomeComponent = (data) => {
       <Header onLogoHover={onLogoHover} />
       <div className={styles.SoneHome}>
         {/* random background video from array */}
-        <video className={videoClasses} muted loop playsInline autoPlay>
-          <source src={tryGetFileAsset(videos[getRandomInt(videos.length)], myConfiguredSanityClient.config()).url} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {videos &&
+          <video className={videoClasses} muted loop playsInline autoPlay>
+            <source src={tryGetFileAsset(videos[getRandomInt(videos.length)], myConfiguredSanityClient.config()).url} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        }
 
         <h1 className={headlineClasses}>{data.data.excerpt}</h1>
       </div>

@@ -1,5 +1,7 @@
 import sanity from '../lib/sanity'
 import { HomeComponent } from '../components'
+import { useRouter } from 'next/router'
+
 
 // import { NextSeo } from 'next-seo'
 // import fetchJson from '@lib/fetchJson'
@@ -8,20 +10,7 @@ import { HomeComponent } from '../components'
 // import { reconcileCollectionAndAssets } from '@lib/reconcileCollectionAndAssets'
 // import { getCollectionCover } from '@lib/getCollectionCover'
 
-// this query is all placeholder for now
-const query = `*[_type == "welcome" && language == "en"] {
-  _id,
-  _type,
-  title,
-  slug,
-  language,
-  excerpt,
-  homeVideos,
-  "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
-    slug,
-  },
-}[0]
-`
+
 
 const MeLlamoArtPage = ({
   // profile,
@@ -59,13 +48,29 @@ const MeLlamoArtPage = ({
 
 export default MeLlamoArtPage
 
-fetch
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   // let user = {}
   let profile = {}
   let ogUrl = ''
   let ogImage = '/social_home_new.png'
   let ogTitle = 'Me Llamo Art'
+
+  // let currentLanguage = locale === 'en' ? locale : 'en';
+
+  // this query is all placeholder for now
+  const query = `*[_type == "welcome" && language == "${locale}"] {
+    _id,
+    _type,
+    title,
+    slug,
+    language,
+    excerpt,
+    homeVideos,
+    "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+      slug,
+    },
+  }[0]
+  `
 
   const sanityData = await sanity.fetch(query)
 

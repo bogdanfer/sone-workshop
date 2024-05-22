@@ -2,11 +2,7 @@ import React from 'react';
 import Menu from '../Menu/Menu';
 import Link from 'next/link';
 
-
 const Header = ({ onLogoHover }) => {
-
-    console.log("fn: ", onLogoHover)
-
     const toggleMenu = (menuState) => {
       onLogoHover(menuState, false)
     }
