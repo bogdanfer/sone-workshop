@@ -1,0 +1,38 @@
+@import url('variables/breakpoints.css');
+
+html {
+  height: 100%;
+  width: 100vw;
+  scroll-behavior: smooth;
+}
+
+body {
+  text-transform: none;
+  text-decoration: none;
+  text-align: left;
+  word-wrap: normal;
+  height: 100%;
+  width: 100%;
+  font-family:
+    -apple-system,
+    system-ui,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Helvetica,
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+
+}
+
+h1,
+h2,
+h3,
+strong,
+em {
+  font-variant: normal;
+}

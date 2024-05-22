@@ -1,0 +1,99 @@
+.header-wrapper {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: calc(100% - 100px);
+    padding: 0 50px;
+}
+
+.sone-menu-content {
+    position: fixed;
+    top: 150px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: calc(100vw - 300px);
+    margin: 0 auto;
+}
+
+.sone-menu-content[data-visible="false"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sone-menu-content[data-visible="false"] .sone-menu-content--right a {
+    line-height: 120%;
+}
+
+.sone-menu-content[data-visible="true"] {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.sone-menu-content[data-visible="true"] .sone-menu-content--right a {
+    line-height: 100%;
+}
+
+.sone-menu-content--left a {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-menu-content--left a:hover {
+    cursor: pointer;
+}
+
+.sone-menu-content--right {
+    text-align: right;
+}
+
+.sone-menu-content--right a {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 80px;
+    line-height: 100%;
+    letter-spacing: -3px;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: all 0.4s ease;
+}
+
+.sone-menu-content--right a:hover,
+.sone-menu-content--right a.active {
+    color: #fff;
+    cursor: pointer;
+}
+
+.some-language-wrapper {
+    position: absolute;
+    top: -35px;
+    right: 20px;
+}
+
+.some-language-wrapper a {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

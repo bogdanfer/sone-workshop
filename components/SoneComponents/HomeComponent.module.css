@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@300;700&family=Roboto:wght@100;300;400;500;900&display=swap");
+@import url("../../styles/variables/breakpoints.css");
+
+/* .MeLlamoArtContainer {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-gray: #464646;
+  --color-blue: #046bff;
+  --color-bluedark1: #005de4;
+  --color-bluedark2: #0068ff;
+  --color-bluedark3: #267eff;
+  --color-brandblue: #04367f;
+  --robotoFont: "Roboto", sans-serif;
+  --archivoFont: "Archivo", sans-serif;
+  --desktopViewportWidth: calc(100vw - 244px);
+  --desktopNavWidth: 244px;
+
+  position: relative;
+  display: block;
+  width: calc(100vw - 50px);
+  height: 100vh;
+  margin: 0 auto;
+} */
+
+.SoneHome {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.SoneHomeWrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.SoneHomeVideoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 104vw;
+  height: 104vh;
+  margin: -2vh auto auto -2vw;
+  object-fit: cover;
+  z-index: -100;
+  pointer-events: none;
+  transition: filter 0.5s ease;
+}
+
+.hasBlur {
+  filter: blur(20px);
+}
+
+.SoneHeadline {
+  display: block;
+  max-width: 1020px;
+  margin: 150px auto 0;
+  font-family: "neue-haas-grotesk-display", sans-serif;
+  font-size: 80px;
+  font-weight: 500;
+  line-height: 106%;
+  font-style: normal;
+  color: #000;
+  text-align: left;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  transform: translate3d(0,20px,0);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.fadeInHeadline {
+  transform: translate3d(0,0,0);
+  opacity: 1;
+  line-height: 100%;
+} 

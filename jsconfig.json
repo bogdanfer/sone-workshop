@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@constants": ["./constants"],
+      "@constants/*": ["./constants/*"],
+      "@lib": ["./lib"],
+      "@lib/*": ["./lib/*"],
+      "@components": ["./components"],
+      "@components/*": ["./components/*"],
+      "@utils": ["./components/01-utils"],
+      "@utils/*": ["./components/01-utils/*"],
+      "@atoms": ["./components/02-atoms"],
+      "@atoms/*": ["./components/02-atoms/*"],
+      "@molecules": ["./components/03-molecules"],
+      "@molecules/*": ["./components/03-molecules/*"],
+      "@organisms": ["./components/04-organisms"],
+      "@organisms/*": ["./components/04-organisms/*"],
+      "@templates": ["./components/05-templates"],
+      "@templates/*": ["./components/05-templates/*"],
+      "@contexts": ["./contexts"],
+      "@contexts/*": ["./contexts/*"],
+      "@hooks": ["./hooks"],
+      "@hooks/*": ["./hooks/*"],
+      "@pages": ["./pages"],
+      "@pages/*": ["./pages/*"],
+      "@static": ["./public"],
+      "@static/*": ["./public/*"]
+    }
+  }
+}

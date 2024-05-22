@@ -1,0 +1,27 @@
+.SoneMenuButton {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SoneMenuButton:hover {
+    cursor: pointer;
+}
+
+.SoneMenuButton[data-isopen="true"] .SoneMenuButtonLine + .SoneMenuButtonLine {
+    transform: rotate(0);
+}
+
+.SoneMenuButtonLine {
+    display: block;
+    width: 50px;
+    height: 5px;
+    background: #000;
+    transition: transform 0.4s ease;
+}
+
+.SoneMenuButtonLine + .SoneMenuButtonLine {
+    transform: rotate(90deg);
+    margin-left: -50px;
+}

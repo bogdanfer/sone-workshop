@@ -1,0 +1,57 @@
+:root {
+  --padding: 1rem;
+  --padding-responsive: var(--padding);
+  --page-padding: min(max(5vw, 2rem), 8rem);
+  --max-width: 1460px;
+  --font-size: 10px;
+  --baseline-rem: 1.6rem;
+  --baseline-rem-leading: 2.2rem;
+  --degularFont: 'degular-display', sans-serif;
+  --robotoFont: 'roboto', sans-serif;
+  --radius: 1rem;
+  --main-grid: repeat(12, 1fr);
+  --menu-width: 350px;
+  --menu-closed-width: 58px;
+  --menu-toggle-button-width: 25px;
+  --menu-toggle-button-height: 130px;
+  --main-margin: 6rem;
+  --grid-item-size: calc((min(1280px, 90vw) - 8rem) / 4);
+  --footer-offset: 103px;
+  --consistent-element: #fff;
+  --baseline-transition: all 0.8s ease;
+}
+
+@media only screen and (max-height: 786px) {
+  :root {
+    --font-size: 9px;
+    --footer-offset: 125px;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  :root {
+    --max-width: 1200px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  :root {
+    --max-width: 1024px;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  :root {
+    --max-width: calc(100vw - 4rem);
+    --font-size: 9px;
+  }
+}
+
+@media only screen and (max-width: 876px) {
+  :root {
+    --font-size: 8px;
+    --baseline-rem: 1.75rem;
+    --baseline-rem-leading: 2.25rem;
+    --main-margin: 1.3rem;
+  }
+}

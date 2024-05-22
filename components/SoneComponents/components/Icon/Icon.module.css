@@ -1,0 +1,20 @@
+.root {
+  position: relative;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.toolTip {
+  display: none;
+  font-size: 1.3rem;
+  position: absolute;
+  top: 100%;
+  background: var(--color-dark);
+  color: var(--color-highlight);
+  padding: 0.7rem 1rem;
+  width: fit-content;
+  text-align: center;
+  left: 0;
+  opacity: 0.7;
+  white-space: nowrap;
+}

@@ -1,0 +1,14 @@
+@custom-media --xsmall (width >= 400px);
+@custom-media --small (width >= 540px);
+@custom-media --medium-small (width >= 720px);
+@custom-media --medium (width >= 960px);
+@custom-media --medium-large (width >= 1140px);
+@custom-media --large (width >= 1380px);
+
+/* below */
+@custom-media --below-xsmall (width < 400px);
+@custom-media --below-small (width < 540px);
+@custom-media --below-medium-small (width < 876px);
+@custom-media --below-medium (width < 960px);
+@custom-media --below-medium-large (width < 1140px);
+@custom-media --below-large (width < 1380px);

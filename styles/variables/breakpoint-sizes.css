@@ -1,0 +1,12 @@
+:root {
+  --small: width >= 480px;
+  --medium-small: width >= 640px;
+  --medium: width >= 960px;
+  --medium-large: width >= 1140px;
+  --large: width >= 1380px;
+  --below-small: width < 480px;
+  --below-medium-small: width < 640px;
+  --below-medium: width < 960px;
+  --below-medium-large: width < 1140px;
+  --below-large: width < 1380px;
+}
