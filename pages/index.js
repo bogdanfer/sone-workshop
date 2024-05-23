@@ -55,8 +55,6 @@ export async function getStaticProps({ locale }) {
   let ogImage = '/social_home_new.png'
   let ogTitle = 'Me Llamo Art'
 
-  // let currentLanguage = locale === 'en' ? locale : 'en';
-
   // this query is all placeholder for now
   const query = `*[_type == "welcome" && language == "${locale}"] {
     _id,

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 // import { useSearchParams } from 'react-router-dom';
 
 
-const LocaleSwitcher = () => {
+const LocaleSwitcher = ({ variant }) => {
   // const params = useSearchParams();
 
   // console.log("params: ", params)
@@ -26,7 +26,7 @@ const LocaleSwitcher = () => {
   const currentLocale = useRouter().locale;
 
   return (
-    <div className="some-language-wrapper">
+    <div className="some-language-wrapper" data-variant={variant}>
       {i18n.languages.map((version) => {
         if (version.id !== currentLocale) {
           return (

@@ -45,3 +45,26 @@
 .z-50 {
   z-index: 50;
 }
+
+.sone-caps-text-large {
+  font-family: neue-haas-grotesk-display, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 80px;
+  line-height: 100%;
+  letter-spacing: -3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-break-spaces {
+  text-align: left;
+  width: min-content;
+  white-space: break-spaces;
+}
+
+.hasBlur {
+  filter: blur(20px);
+}

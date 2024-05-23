@@ -4,7 +4,7 @@ import LocaleSwitcher from '../LocaleSwitcher/LocaleSwitcher';
 
 import styles from './Menu.module.css'
 
-const Menu = ({ toggleMenu }) => {
+const Menu = ({ toggleMenu, variant }) => {
     const [ isMenuOpen, setMenuOpen ] = useState(false);
     const menuItems = [
         {
@@ -22,8 +22,13 @@ const Menu = ({ toggleMenu }) => {
         {
             "title": "Contact",
             "link": "/contact"
+        },
+        {
+            "title": "Workshop",
+            "link": "/workshop"
         }
     ]
+
     return (
         <>
             <div 
@@ -34,12 +39,12 @@ const Menu = ({ toggleMenu }) => {
                     toggleMenu(!isMenuOpen)
                 }}
             >
-                <span className={styles.SoneMenuButtonLine}></span>
-                <span className={styles.SoneMenuButtonLine}></span>
+                <span className={styles.SoneMenuButtonLine} data-variant={variant}></span>
+                <span className={styles.SoneMenuButtonLine} data-variant={variant}></span>
             </div>
 
             {/* Menu Content */}
-            <div className='sone-menu-content' data-visible={isMenuOpen}>
+            <div className='sone-menu-content' data-visible={isMenuOpen} data-variant={variant}>
                 {/* Menu Content - Left */}
                 <div className='sone-menu-content--left'>
                     <h5>
@@ -56,7 +61,7 @@ const Menu = ({ toggleMenu }) => {
                         {menuItems.map((item, index) => {
                             return (
                                 <li key={index}>
-                                    <Link href={item.link}>{item.title}</Link>
+                                    <Link className='sone-caps-text-large' href={item.link}>{item.title}</Link>
                                 </li>
                             )
                         })}
@@ -66,7 +71,7 @@ const Menu = ({ toggleMenu }) => {
 
             {/* Locale Switcher */}
             {isMenuOpen &&
-                <LocaleSwitcher />
+                <LocaleSwitcher variant={variant} />
             }
             
         </>

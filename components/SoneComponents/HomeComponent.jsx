@@ -53,38 +53,6 @@ const HomeComponent = (data) => {
         <h1 className={headlineClasses}>{data.data.excerpt}</h1>
       </div>
     </>
-
-
-    // <div className={styles.MeLlamoArtContainer}>
-    //   <div className={styles.MeLlamoArtMobileToggle}>
-    //     <input type="checkbox" onClick={toggleMobileMenu} />
-    //     <span></span>
-    //     <span></span>
-    //     <span></span>
-    //   </div>
-
-    //   <div className={
-    //     styles.MeLlamoArtNavBar + ' ' +
-    //     (showMobileMenu ? styles.MeLlamoArtMobileShow : '')
-    //   }>
-    //     <nav>
-    //       <a
-    //         href="#home"
-    //         className={styles.MeLlamoArtLogoWrapper}
-    //       >
-    //         <Icon variant="meLlamo" />
-    //         <span className={styles.MeLlamoArtTypeLogo}>Me Llamo Art</span>
-    //       </a>
-    //       <div>
-    //         <a href="#founder">Founder</a>
-    //         <a href="#artists">Artists</a>
-    //         <a href="#galleries">Galleries</a>
-    //         <Link href="/team">Team</Link>
-    //         <a href="#about">About</a>
-    //       </div>
-    //     </nav>
-    //   </div>
-    // </div>
   )
 }
 

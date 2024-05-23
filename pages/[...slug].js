@@ -6,37 +6,54 @@ import { useRouter } from "next/router";
 import { useParams } from 'next/navigation';
 import { useEffect, useState, useRef } from "react";
 
+
 // import styles from '../MeLlamoArt.module.css'
 
 
 export default function Page({ params }) {
-  console.log("params: ", params);
+  const router = useRouter();
+  const slug = router?.query?.slug;
+
+  console.log("Slug: ", slug)
+  // console.log("params: ", params);
 
   return (
     <h1>My Page</h1>
   )
 }
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [],
-//     fallback: true,
-//   };
-// }
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true,
+  };
+}
 
-// //currently returns all artists data
-// //need to refactor to retrieve only one at a time
-// export async function getStaticProps({ params }) {
-//   const query = `*[_type == "site" && title == "Me Llamo Art"] 
-//   {
-//     artists,
-//   }[0]
-//   `;
-//   const artistData = await sanity.fetch(query);
+//currently returns all artists data
+//need to refactor to retrieve only one at a time
+export async function getStaticProps({ params, locale }) {
+  const { slug } = params;
+  const [type] = slug;
 
-//   return {
-//     props: {
-//       artistData,
-//     },
-//   };
-// }
+  const query = `*[_type == "${type}" && language == "${locale}"] {
+    _id,
+    _type,
+    title,
+    slug,
+    language,
+    excerpt,
+    "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+      slug,
+    },
+  }[0]
+  `
+  const pageData = await sanity.fetch(query);
+
+  console.log(pageData)
+
+  return {
+    props: {
+      pageData,
+    },
+  };
+}
