@@ -55,27 +55,3 @@
 .hasBlur {
   filter: blur(20px);
 }
-
-.SoneHeadline {
-  display: block;
-  max-width: 1020px;
-  margin: 150px auto 0;
-  font-family: "neue-haas-grotesk-display", sans-serif;
-  font-size: 80px;
-  font-weight: 500;
-  line-height: 106%;
-  font-style: normal;
-  color: #000;
-  text-align: left;
-  text-transform: uppercase;
-  transition: all 0.5s ease;
-  transform: translate3d(0,20px,0);
-  pointer-events: none;
-  opacity: 0;
-}
-
-.fadeInHeadline {
-  transform: translate3d(0,0,0);
-  opacity: 1;
-  line-height: 100%;
-} 

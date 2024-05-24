@@ -29,3 +29,14 @@
     transform: rotate(90deg);
     margin-left: -50px;
 }
+
+@media only screen and (max-width: 600px) {
+    .SoneMenuButtonLine {
+        width: 40px;
+        height: 4px;
+    }
+
+    .SoneMenuButtonLine + .SoneMenuButtonLine {
+        margin-left: -40px;
+    }
+}

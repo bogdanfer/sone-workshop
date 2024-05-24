@@ -1,5 +1,5 @@
-import Icon from './components/Icon/Icon.jsx'
-import Link from 'next/link';
+// import Icon from './components/Icon/Icon.jsx'
+// import Link from 'next/link';
 import Header from './components/Header/Header.jsx';
 
 import { useState } from 'react'
@@ -15,7 +15,7 @@ const HomeComponent = (data) => {
   // const [showMobileMenu, setMobileMenu] = useState(false)
   // const toggleMobileMenu = () => setMobileMenu(!showMobileMenu)
 
-  console.log("here is: ", data )
+  // console.log("here is: ", data )
 
   if (!data.data) {
     return
@@ -34,13 +34,9 @@ const HomeComponent = (data) => {
     [styles.hasBlur]: isVideoBlur,
   });
 
-  const headlineClasses = classNames(styles.SoneHeadline, {
-    [styles.fadeInHeadline]: showIntroText
-  })
-
   return (
     <>
-      <Header onLogoHover={onLogoHover} />
+      <Header slogan={data.data.excerpt} onLogoHover={onLogoHover} />
       <div className={styles.SoneHome}>
         {/* random background video from array */}
         {videos &&
@@ -49,8 +45,6 @@ const HomeComponent = (data) => {
             Your browser does not support the video tag.
           </video>
         }
-
-        <h1 className={headlineClasses}>{data.data.excerpt}</h1>
       </div>
     </>
   )

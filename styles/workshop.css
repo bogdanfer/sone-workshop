@@ -25,6 +25,13 @@
     margin: 150px auto 0;
 }
 
+@media only screen and (max-width: 600px) {
+    .sone-workshop-content {
+        width: calc(100vw - 40px);
+        margin: 100px auto 0;
+    }
+}
+
 .sone-workshop-content h4 {
     color: #fff;
 }

@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import LocaleSwitcher from '../LocaleSwitcher/LocaleSwitcher';
 
 import styles from './Menu.module.css'
 
-const Menu = ({ toggleMenu, variant }) => {
+const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
     const [ isMenuOpen, setMenuOpen ] = useState(false);
     const menuItems = [
         {
@@ -28,6 +29,10 @@ const Menu = ({ toggleMenu, variant }) => {
             "link": "/workshop"
         }
     ]
+
+    const headlineClasses = classNames("sone-menu-headline", {
+        ['sone-menu-headline--fadein']: showExcerpt
+    })
 
     return (
         <>
@@ -73,7 +78,10 @@ const Menu = ({ toggleMenu, variant }) => {
             {isMenuOpen &&
                 <LocaleSwitcher variant={variant} />
             }
-            
+
+            {/* slogan */}
+            <h1 className={headlineClasses} data-variant={variant}>{slogan}</h1>
+
         </>
     );
 };

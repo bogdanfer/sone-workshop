@@ -1,8 +1,8 @@
 import Workshop from "@components/SoneComponents/components/Workshop";
 import sanity from "@lib/sanity";
 
-const WorkshopPage = ({ pageData }) => {
-  return <Workshop workshopData={pageData}/>;
+const WorkshopPage = ({ pageData, headerData }) => {
+  return <Workshop workshopData={pageData} slogan={headerData.excerpt}/>;
 };
 
 export default WorkshopPage;
@@ -25,10 +25,26 @@ export async function getStaticProps({ params, locale }) {
     }[0]
     `
     const pageData = await sanity.fetch(query);
+
+    // header query 
+    const query_header = `*[_type == "welcome" && language == "${locale}"] {
+      _id,
+      _type,
+      title,
+      language,
+      excerpt,
+      "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
+        slug,
+      },
+    }[0]
+    `
+  
+    const headerData = await sanity.fetch(query_header)
   
     return {
       props: {
         pageData,
+        headerData,
       },
     };
   }

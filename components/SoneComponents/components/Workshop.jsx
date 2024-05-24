@@ -4,7 +4,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import classNames from 'classnames';
 import Header from './Header/Header';
 
-const Workshop = ({ workshopData }) => {
+const Workshop = ({ workshopData, slogan }) => {
     // states
     const [ isImgBlur, setIsImgBlur ] = useState(false);
 
@@ -31,7 +31,7 @@ const Workshop = ({ workshopData }) => {
                 <img className={imgClasses} src={backgroundImage} alt="" />
 
                 {/* Header */}
-                <Header onLogoHover={onLogoHover} variant="white" /> 
+                <Header slogan={slogan} onLogoHover={onLogoHover} variant="white" /> 
 
                 {/* Content */}
                 {!isImgBlur &&

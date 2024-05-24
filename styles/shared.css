@@ -59,6 +59,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media only screen and (max-width: 600px) {
+  .sone-caps-text-large {
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0;
+  }
+}
+
 .sone-break-spaces {
   text-align: left;
   width: min-content;
@@ -67,4 +75,45 @@
 
 .hasBlur {
   filter: blur(20px);
+}
+
+.sone-menu-headline {
+  position: absolute;
+  top: 0;
+  left: 150px;
+  display: block;
+  max-width: 1020px;
+  margin: 100px auto 0;
+  font-family: "neue-haas-grotesk-display", sans-serif;
+  font-size: 80px;
+  font-weight: 500;
+  line-height: 106%;
+  font-style: normal;
+  color: #000;
+  text-align: left;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  transform: translate3d(0,20px,0);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sone-menu-headline--fadein {
+  transform: translate3d(0,0,0);
+  opacity: 1;
+  line-height: 100%;
+}
+
+.sone-menu-headline[data-variant="white"] {
+  color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .sone-menu-headline {
+    left: 20px;
+    max-width: calc(100% - 40px);
+    margin: 100 auto 0;
+    font-size: 32px;
+    line-height: 106%;
+  }
 }
