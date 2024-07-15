@@ -53,10 +53,10 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
                 {/* Menu Content - Left */}
                 <div className='sone-menu-content--left'>
                     <h5>
-                        <a href="mailto:contact@soneworkshop.com">contact@soneworkshop.com</a>
+                        <a className="contact-link" href="mailto:contact@soneworkshop.com">contact@soneworkshop.com</a>
                     </h5>
                     <h5>
-                        <a href="tel:+33157840051">+33157840051</a>
+                        <a className="contact-link" href="tel:+33157840051">+33157840051</a>
                     </h5>
                 </div>
 

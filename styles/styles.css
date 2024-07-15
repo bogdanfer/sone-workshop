@@ -9,6 +9,9 @@
 
 @import "menu";
 @import "workshop";
+@import "contact";
+@import "projects";
+@import "project";
 
 a:hover,
 button:hover {

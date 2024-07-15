@@ -1,0 +1,189 @@
+.sone-project-content {
+    display: flex;
+    flex-direction: row;
+    width: calc(100vw - 100px);
+    margin: 150px auto 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .sone-project-content {
+        flex-direction: column;
+        width: calc(100vw - 50px);
+        margin: 100px auto 0;
+    }
+}
+
+.sone-project-content--left {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-bottom: 40px;
+}
+
+.sone-project-content--right {
+    display: flex;
+    flex-direction: column;
+    width: calc(40% - 50px);
+    min-height: calc(100vh - 150px);
+    margin-left: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    .sone-project-content--left,
+    .sone-project-content--right {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .sone-project-content--right {
+        margin-top: 50px;
+    }
+}
+
+.sone-project-title {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-project-concept {
+    margin-top: 50px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 100%;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-project-description {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 22px;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    white-space: pre-line;
+}
+
+.sone-project-extras {
+    position: absolute;
+    top: 0;
+}
+
+.sone-project-extras,
+.sone-project-extras li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-items: flex-start;
+}
+
+.sone-project-extras li:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.sone-project-extras li span {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 22px;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-project-extras li span:first-child {
+    font-weight: 600;
+}
+
+.sone-project-extras li span:last-child {
+    font-weight: 500;
+}
+
+.sone-project-content-area {
+    position: relative;
+    margin-top: 50px;
+}
+
+.sone-project-content-area p,
+.sone-project-content-area ul {
+    transition: all 0.3s ease;
+}
+
+.sone-project-content-area[data-extra="true"] p,
+.sone-project-content-area[data-extra="false"] ul {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    transform: translate3d(0,20px,0);
+}
+
+.sone-project-content-area[data-extra="false"] p,
+.sone-project-content-area[data-extra="true"] ul {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 2;
+    transform: translate3d(0,0,0);
+}
+
+
+.sone-project-button-toggle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin: 50px 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.sone-project-button-toggle span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #000;
+    transition: transform 0.3s ease;
+}
+
+.sone-project-button-toggle span + span {
+    transform: rotate(90deg);
+    margin-left: -30px;
+}
+
+.sone-project-button-toggle[data-isopen='true'] span + span {
+    transform: rotate(0);
+}
+
+.sone-project-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+.sone-project-nav a {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 22px;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #000;
+}

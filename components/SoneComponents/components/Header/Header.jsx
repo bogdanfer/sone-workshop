@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Menu from '../Menu/Menu';
 import Link from 'next/link';
 
-const Header = ({ slogan, onLogoHover, variant }) => {
+const Header = ({ slogan, onLogoHover, variant, size }) => {
     const [ showExcerpt, setShowExcerpt ] = useState(false);
     const toggleMenu = (menuState) => {
       onLogoHover(menuState, false)
@@ -11,7 +11,7 @@ const Header = ({ slogan, onLogoHover, variant }) => {
     const logoVariant = variant === "white" ? "#fff" : "#000";
 
   return (
-    <header className="header-wrapper">
+    <header className="header-wrapper" data-size={size}>
       <nav className="header-nav">
         <ul className="flex relative">
           <li 
