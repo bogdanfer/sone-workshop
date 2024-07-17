@@ -21,6 +21,7 @@ const Projects = ({ projectsData, slogan }) => {
     const [ showFilter, setShowFilter ] = useState(true);
     const [ showSubFilter, setShowSubFilter ] = useState(false);
     const [ showList, setshowList ] = useState(false);
+    const [ showMobileFilter, setShowMobileFilter ] = useState(false);
 
     const mainFilters = [
         "Typology",
@@ -66,7 +67,6 @@ const Projects = ({ projectsData, slogan }) => {
             setProjects(projectsData.projects);
             setShowFilter(true);
             setShowSubFilter(false);
-            // sortProjectsByDetail('Year');
             return;
         } else {
             console.log(projectsData.projects);
@@ -134,11 +134,24 @@ const Projects = ({ projectsData, slogan }) => {
         });
     };
 
+    // handle mouse over on list table
+    const handleMouseOver = (action, backgroundImage) => {
+        const bgEl = document.querySelector('.sone-list-background-full');
+        bgEl.dataset.bg = action === 'in' ? true : false;
+        bgEl.style.backgroundImage = action === 'in' ? backgroundImage : '';
+    }
+
     return (
         <>         
             <div className='sone-projects-wrapper'>
                 {/* Header */}
-                <Header slogan={slogan} onLogoHover={onLogoHover} variant="black" size="small" /> 
+                <Header slogan={slogan} onLogoHover={onLogoHover} variant="black" size="small" showFilterMenu="true" /> 
+                
+                {/* Mobile Filter Menu */}
+                <button className='sone-mobile-filter-menu' onClick={() => setShowMobileFilter(!showMobileFilter)} data-open={showMobileFilter}>
+                    <span>
+                    </span>
+                </button>
 
                 {/* Filter */}
                 <ul className='sone-main-filters' data-islist={showList} data-mainfilter={!showSubFilter}>
@@ -191,6 +204,7 @@ const Projects = ({ projectsData, slogan }) => {
                         </div>
                         : 
                         <ul className='sone-project-content-list'>
+                            <div className='sone-list-background-full'></div>
                             <li className='sone-project-content-list-head'>
                                 <span className='sone-list-date' onClick={() => sortProjectsByDetail('Year')}>date</span>
                                 <span className='sone-list-title' onClick={() => sortProjectsByProperty('title')}>title</span>
@@ -201,16 +215,16 @@ const Projects = ({ projectsData, slogan }) => {
                                 <span className='sone-list-status' onClick={() => sortProjectsByDetail('Status')}>status</span>
                             </li>
                             {projects.map((item, index) => {
-                                // let backgroundImage = null;
-                                // if (item.thumbnail?.fileUrl) {
-                                //     backgroundImage = `url(${item.thumbnail.fileUrl})`;
-                                // } else {
-                                //     const firstImgGallery = item.projectImages.find(image => image.extension !== 'mp4');
-                                //     backgroundImage = `url(${firstImgGallery.fileUrl})`;
-                                // }    
+                                let backgroundImage = null;
+                                if (item.thumbnail?.fileUrl) {
+                                    backgroundImage = `url(${item.thumbnail.fileUrl})`;
+                                } else {
+                                    const firstImgGallery = item.projectImages.find(image => image.extension !== 'mp4');
+                                    backgroundImage = `url(${firstImgGallery.fileUrl})`;
+                                }    
                                 
                                 return (
-                                    <li key={index}>
+                                    <li key={index} onMouseEnter={() => handleMouseOver('in', backgroundImage)} onMouseLeave={() => handleMouseOver('out')}>
                                         <a href={item.slug}>
                                             <span className='sone-list-date'>{getValueByTitle(item.details, 'Year')}</span>
                                             <span className='sone-list-title'>{item.title}</span>
