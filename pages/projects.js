@@ -33,7 +33,6 @@ export async function getStaticProps({ params, locale }) {
           "description": description
         },
         "slug": slug.${locale}.current, // Include the entire slug object
-        // Add any other fields you need from the project schema
       },
       slug,
       language,
@@ -43,8 +42,6 @@ export async function getStaticProps({ params, locale }) {
     }[0]
     `
     const pageData = await sanity.fetch(query);
-
-    // console.log("json: ", JSON.stringify(pageData, null, 2));
 
     console.log("projects data: ", pageData)
 
@@ -61,7 +58,7 @@ export async function getStaticProps({ params, locale }) {
     }[0]
     `
   
-    const headerData = await sanity.fetch(query_header)
+    const headerData = await sanity.fetch(query_header);
   
     return {
       props: {

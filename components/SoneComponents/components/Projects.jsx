@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import Header from './Header/Header';
+import Link from 'next/link';
 
 const Projects = ({ projectsData, slogan }) => {
     // states
@@ -49,6 +50,7 @@ const Projects = ({ projectsData, slogan }) => {
         }
 
         if (filter === 'Index') {
+            console.log("filter: ", filter)
             setshowList(!showList);
         }
 
@@ -60,7 +62,7 @@ const Projects = ({ projectsData, slogan }) => {
             shuffleProjects();
         }
     }
-
+    
     const handleSubFilters = (filter) => {
         if (filter === 'All') {
             console.log("here", projectsData.projects);
@@ -141,6 +143,62 @@ const Projects = ({ projectsData, slogan }) => {
         bgEl.style.backgroundImage = action === 'in' ? backgroundImage : '';
     }
 
+    // Letters 
+    const Block = ({ letter }) => (
+        <div className="sone-projects-item sone-projects-item--letter">
+          <div className="sone-projects-item-content">
+            <Link href={"/workshop"}>
+                <h3>{letter}</h3>
+            </Link>
+          </div>
+        </div>
+    );
+
+    // Define the positions for each letter relative to the project blocks
+    const blockPositions = { S: 2, Ō: 3, N: 4, E: 9 };
+    
+    const itemsWithBlocks = [];
+    const numProjects = projects.length;
+    let projectIndex = 0;
+
+    for (let i = 1; projectIndex < numProjects || Object.keys(blockPositions).length > 0; i++) {
+        // Check if a letter should be inserted at this position
+        const letter = Object.keys(blockPositions).find(key => blockPositions[key] === i);
+    
+        if (letter) {
+          itemsWithBlocks.push(<Block key={`block-${letter}`} letter={letter} />);
+          delete blockPositions[letter]; // Remove the letter after it has been inserted
+        }
+    
+        // Check if a project should be inserted at this position
+        if (projectIndex < numProjects) {
+          let item = projects[projectIndex];
+          let backgroundImage = null;
+          if (item.thumbnail?.fileUrl) {
+            backgroundImage = `url(${item.thumbnail.fileUrl})`;
+          } else {
+            const firstImgGallery = item.projectImages.find(image => image.extension !== 'mp4');
+            backgroundImage = `url(${firstImgGallery.fileUrl})`;
+          }
+    
+          itemsWithBlocks.push(
+            <a
+              key={`project-${projectIndex}`}
+              href={item.slug}
+              className="sone-projects-item"
+              style={{ backgroundImage }}
+            >
+              <div className="sone-projects-item-content">
+                <h3>{item.title}</h3>
+                <h4>{item.concept}</h4>
+                <span className="sone-small-plus"></span>
+              </div>
+            </a>
+          );
+          projectIndex++;
+        }
+    }
+
     return (
         <>         
             <div className='sone-projects-wrapper'>
@@ -154,53 +212,32 @@ const Projects = ({ projectsData, slogan }) => {
                 </button>
 
                 {/* Filter */}
-                <ul className='sone-main-filters' data-islist={showList} data-mainfilter={!showSubFilter}>
-                    {showFilter && 
-                        mainFilters.map((item, index) => (
-                            <li key={index}>
-                                <span onClick={() => handleFilters(item)}>{item}</span>
-                            </li>
-                        ))
-                    }
-                    
-                    {showSubFilter &&
-                        subFilters.map((item, index) => (
-                            <li key={index} >
-                                <span onClick={() => handleSubFilters(item)}>{item}</span>
-                            </li>
-                        ))
-                    }
-                </ul>
+                {isImgBlur ? null : (
+                    <ul className='sone-main-filters' data-islist={showList} data-mainfilter={!showSubFilter}>
+                        {showFilter && 
+                            mainFilters.map((item, index) => (
+                                <li key={index}>
+                                    <span onClick={() => handleFilters(item)}>{item}</span>
+                                </li>
+                            ))
+                        }
+                        
+                        {showSubFilter &&
+                            subFilters.map((item, index) => (
+                                <li key={index} >
+                                    <span onClick={() => handleSubFilters(item)}>{item}</span>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                )}
 
                 {/* Content */}
-                {!isImgBlur &&
+                {isImgBlur ? null : (
                     !showList
                         ? 
                         <div className='sone-projects-content'>
-                            {projects.map((item, index) => {
-                                let backgroundImage = null;
-                                if (item.thumbnail?.fileUrl) {
-                                    backgroundImage = `url(${item.thumbnail.fileUrl})`;
-                                } else {
-                                    const firstImgGallery = item.projectImages.find(image => image.extension !== 'mp4');
-                                    backgroundImage = `url(${firstImgGallery.fileUrl})`;
-                                }    
-                                
-                                return (
-                                    <a 
-                                        key={index} 
-                                        href={item.slug} 
-                                        className='sone-projects-item'
-                                        style={{ backgroundImage }}
-                                    >
-                                        <div className='sone-projects-item-content'>
-                                            <h3>{item.title}</h3>
-                                            <h4>{item.concept}</h4>
-                                            <span className='sone-small-plus'></span>
-                                        </div>
-                                    </a>
-                                )}
-                            )}
+                            {itemsWithBlocks}
                         </div>
                         : 
                         <ul className='sone-project-content-list'>
@@ -238,7 +275,7 @@ const Projects = ({ projectsData, slogan }) => {
                                 );
                             })}
                         </ul>
-                }
+                )}
 
             </div>
         </>

@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import Header from './Header/Header';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-const Project = ({ projectData, slogan }) => {
+const Project = ({ projectData, slogan, allProjects }) => {
+    const router = useRouter();
+
     // Menu Settings / States
     const [ isImgBlur, setIsImgBlur ] = useState(false);
 
@@ -17,7 +21,33 @@ const Project = ({ projectData, slogan }) => {
     // Project States
     const [showExtras, setShowExtras] = useState(false);
 
-    console.log("project data: ", projectData)
+    console.log("project data: ", projectData?.slug[router.locale]?.current)
+    console.log("all projects slugs: ", allProjects)
+
+    // Compose Next/Prev Slugs 
+    const [ prevSlug, setPrevSlug] = useState(null);
+    const [ nextSlug, setNextSlug] = useState(null);
+
+    const currentSlug = projectData?.slug[router?.locale]?.current;
+    const allSlugs = allProjects?.projects;
+
+    // Find the index of the current slug
+    useEffect(() => {
+        if (Array.isArray(allSlugs)) {
+            const currentIndex = allSlugs?.findIndex(project => project.slug === currentSlug);
+            if (currentIndex === -1) {
+                console.error('Slug not found in allSlugs');
+            } else {
+                // Determine the previous and next indices
+                const prevIndex = (currentIndex - 1 + allSlugs.length) % allSlugs.length;
+                const nextIndex = (currentIndex + 1) % allSlugs.length;
+            
+                // Get the previous and next slugs
+                setPrevSlug(allSlugs[prevIndex]?.slug);
+                setNextSlug(allSlugs[nextIndex]?.slug);
+            }
+        }
+    }, [currentSlug])
 
     return (
         <>         
@@ -67,19 +97,17 @@ const Project = ({ projectData, slogan }) => {
                             </button>
 
                             <div className='sone-project-nav'>
-                                <a href="">Previous Project</a>
-                                <a href="">Next Project</a>
+                                {prevSlug &&
+                                    <Link href={prevSlug}>Previous Project</Link>
+                                }
+                                
+                                {nextSlug &&
+                                    <Link href={nextSlug}>Next Project</Link>
+                                }
                             </div>
                         </div>
-
-                        {/* MOCK DATA */}
-                        
-                        {/* END MOCK DATA */}
-
                     </div>
                 }
-
-
             </div>
         </>
     );

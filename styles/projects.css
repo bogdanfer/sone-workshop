@@ -24,6 +24,40 @@
     color: #000;
 }
 
+.sone-projects-item--letter {
+    background-color: rgb(255, 255, 255);
+}
+
+.sone-projects-item--letter .sone-projects-item-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    background-color: #fff;
+    transform: translate3d(0,0,0);
+    filter: blur(0);
+    opacity: 1;
+}
+
+.sone-projects-item--letter .sone-projects-item-content a {
+    text-decoration: none;
+    color: #000;
+}
+
+.sone-projects-item--letter .sone-projects-item-content h3 {
+    font-size: 120px;
+    font-weight: 700;
+}
+
+.sone-projects-item--letter .sone-projects-item-content h3 {
+    transition: opacity 0.3s ease;
+}
+
+.sone-projects-item--letter .sone-projects-item-content h3:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
 .sone-projects-item:nth-child(4n) {
     margin-right: 0;
 }
