@@ -3,7 +3,7 @@ import { HomeComponent } from '../components'
 import { useRouter } from 'next/router'
 
 
-// import { NextSeo } from 'next-seo'
+import { NextSeo } from 'next-seo'
 // import fetchJson from '@lib/fetchJson'
 // import { endpoints, getAssetUrl } from '@constants'
 // import { getUserAssetsWithPagination } from '@lib/getUserAssetsPagination'
@@ -23,26 +23,26 @@ const MeLlamoArtPage = ({
   // console.log("sanityData: ", sanityData)
 
   return (
-    // <>
-      // <NextSeo
-      //   url={ogUrl}
-      //   title={ogTitle}
-      //   description="Citrus"
-      //   openGraph={{
-      //     url: ogUrl,
-      //     title: ogTitle,
-      //     description: 'Citrus',
-      //     images: [
-      //       {
-      //         url: ogImage,
-      //         width: 2024,
-      //         height: 1012,
-      //       },
-      //     ],
-      //   }}
-      // />
+    <>
+      <NextSeo
+        // url={ogUrl}
+        title="SONE Workshop"
+        description="SONE Workshop"
+        openGraph={{
+          // url: ogUrl,
+          // title: ogTitle,
+          description: "SONE Workshop",
+          // images: [
+          //   {
+          //     url: ogImage,
+          //     width: 2024,
+          //     height: 1012,
+          //   },
+          // ],
+        }}
+      />
       <HomeComponent data={sanityData} />
-    // </>
+    </>
   )
 }
 
