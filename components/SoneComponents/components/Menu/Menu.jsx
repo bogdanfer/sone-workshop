@@ -16,10 +16,10 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
             "title": "Projects",
             "link": "/projects"
         },
-        // {
-        //     "title": "About",
-        //     "link": "/about"
-        // },
+        {
+            "title": "About",
+            "link": "/about"
+        },
         {
             "title": "Contact",
             "link": "/contact"

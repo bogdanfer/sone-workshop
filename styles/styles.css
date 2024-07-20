@@ -12,6 +12,7 @@
 @import "contact";
 @import "projects";
 @import "project";
+@import "about";
 
 a:hover,
 button:hover {

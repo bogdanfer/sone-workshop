@@ -1,0 +1,110 @@
+.sone-about-wrapper {
+    display: block;
+    width: 100vw;
+}
+
+.sone-about-wrapper .sone-image-background {
+    max-height: 76vh;
+}
+
+.sone-letter-o-mask {
+    position: absolute;
+    top: 150px;
+    right: 0;
+    display: block;
+    width: 51vw;
+    min-width: 100px;
+    max-width: 960px;
+    margin: 0;
+    overflow: hidden;
+}
+
+.sone-letter-o {
+    margin-right: -75px;
+}
+
+.sone-about-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 1.Section*/
+.sone-about-section-one {
+    position: relative;
+    width: calc(100vw - 100px);
+    margin-left: 100px;
+    margin-top: calc(76vh + 150px);
+    background: gray;
+}
+
+.sone-about-section-one h3 {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
+    font-size: 100px;
+    line-height: 100%;
+    font-style: normal;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-about-img-1 {
+    display: block;
+    width: 39vw;
+    height: auto;
+    margin-top: -25%;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+/* 2.Section */
+.sone-about-section-two {
+    position: relative;
+    width: calc(100vw - 200px);
+    margin: 100px auto 0;
+    background: gainsboro;
+}
+
+.sone-about-section-two .sone-about-img-2 {
+    display: block;
+    width: 61%;
+}
+
+.sone-about-section-two .sone-about-text-holder {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    text-align: left;
+}
+
+.sone-about-section-two .sone-about-text-holder h4 {
+    display: block;
+    padding-right: 150px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    font-style: normal;
+    color: #000;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-about-section-two .sone-about-text-holder p {
+    display: block;
+    margin-top: 50px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    font-style: normal;
+    color: #000;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
