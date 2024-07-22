@@ -3,15 +3,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: rotate(0);
+    transition: transform 0.5s ease;
 }
 
 .SoneMenuButton:hover {
     cursor: pointer;
 }
 
-.SoneMenuButton[data-isopen="true"] .SoneMenuButtonLine + .SoneMenuButtonLine {
-    transform: rotate(0);
+.SoneMenuButton:hover {
+    transform: rotate(360deg);
 }
+
+/* .SoneMenuButton[data-isopen="true"] {
+    transform: rotate(360deg);
+} */
 
 .SoneMenuButtonLine[data-variant="white"] {
     background: #fff;

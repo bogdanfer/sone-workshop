@@ -80,12 +80,19 @@
 .sone-menu-headline {
   position: absolute;
   top: 0;
-  left: 150px;
-  display: block;
-  max-width: 1020px;
-  margin: 100px auto 0;
+  left: calc(50px + 50px + 134px);
+  
+  display: flex;
+  flex-direction: column;
+  
+  /* max-width: 1020px; */
+  margin: 90px auto 0;
   font-family: "neue-haas-grotesk-display", sans-serif;
-  font-size: 80px;
+  /* font-size: 80px; */
+
+  /* adaptive font-size */
+  font-size: clamp(2rem, 4vw, 8rem);
+
   font-weight: 500;
   line-height: 106%;
   font-style: normal;
@@ -101,11 +108,39 @@
 .sone-menu-headline--fadein {
   transform: translate3d(0,0,0);
   opacity: 1;
-  line-height: 100%;
 }
 
 .sone-menu-headline[data-variant="white"] {
   color: #fff;
+}
+
+.sone-menu-headline-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.sone-menu-headline-mask span {
+  display: block;
+  transform: translate3d(0,100px,0);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sone-menu-headline-mask:first-child span {
+  transition: transform 0.6s ease 0.2s;
+}
+
+.sone-menu-headline-mask:nth-child(2) span {
+  transition: transform 0.6s ease 0.3s;
+}
+
+.sone-menu-headline-mask:last-child span {
+  transition: transform 0.6s ease 0.4s;
+}
+
+.sone-menu-headline--fadein .sone-menu-headline-mask span {
+  transform: translate3d(0,0,0);
+  opacity: 1;
 }
 
 @media only screen and (max-width: 600px) {
