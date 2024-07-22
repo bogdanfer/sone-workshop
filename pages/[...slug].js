@@ -1,10 +1,5 @@
-import FeaturedArtist from "@components/SoneComponents/components/FeaturedArtist/FeaturedArtist";
 import sanity from "@lib/sanity";
-import myConfiguredSanityClient from "@lib/sanity";
-import imageUrlBuilder from "@sanity/image-url";
 import { useRouter } from "next/router";
-import { useParams } from 'next/navigation';
-import { useEffect, useState, useRef } from "react";
 
 
 // import styles from '../MeLlamoArt.module.css'
