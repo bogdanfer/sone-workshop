@@ -2,7 +2,7 @@ import Contact from "@components/SoneComponents/components/Contact";
 import sanity from "@lib/sanity";
 
 const ContactPage = ({ pageData, headerData }) => {
-  return <Contact contactData={pageData} slogan={headerData.excerpt}/>;
+  return <Contact contactData={pageData} slogan={headerData.headlines}/>;
 };
 
 export default ContactPage;

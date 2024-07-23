@@ -2,7 +2,7 @@ import About from "@components/SoneComponents/components/About";
 import sanity from "@lib/sanity";
 
 const AboutPage = ({ pageData, headerData }) => {
-  return <About aboutData={pageData} slogan={headerData.excerpt}/>;
+  return <About aboutData={pageData} slogan={headerData.headlines}/>;
 };
 
 export default AboutPage;

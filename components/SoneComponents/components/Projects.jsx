@@ -7,6 +7,8 @@ const Projects = ({ projectsData, slogan }) => {
     // states
     const [ isImgBlur, setIsImgBlur ] = useState(false);
 
+    // console.log(slogan)
+
     // image classes on blur
     const onLogoHover = (makeBlur) => {
         setIsImgBlur(makeBlur);

@@ -2,7 +2,7 @@ import Workshop from "@components/SoneComponents/components/Workshop";
 import sanity from "@lib/sanity";
 
 const WorkshopPage = ({ pageData, headerData }) => {
-  return <Workshop workshopData={pageData} slogan={headerData.excerpt}/>;
+  return <Workshop workshopData={pageData} slogan={headerData.headlines}/>;
 };
 
 export default WorkshopPage;

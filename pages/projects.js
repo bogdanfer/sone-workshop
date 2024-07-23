@@ -2,7 +2,7 @@ import Projects from "@components/SoneComponents/components/Projects";
 import sanity from "@lib/sanity";
 
 const ProjectsPage = ({ pageData, headerData }) => {
-  return <Projects projectsData={pageData} slogan={headerData.excerpt}/>;
+  return <Projects projectsData={pageData} slogan={headerData.headlines}/>;
 };
 
 export default ProjectsPage;
@@ -43,7 +43,7 @@ export async function getStaticProps({ params, locale }) {
     `
     const pageData = await sanity.fetch(query);
 
-    console.log("projects data: ", pageData)
+    // console.log("projects data: ", pageData)
 
     // header query 
     const query_header = `*[_type == "welcome" && language == "${locale}"] {
