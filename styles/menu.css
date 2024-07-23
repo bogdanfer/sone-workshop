@@ -140,6 +140,10 @@
     }
 }
 
+.sone-menu-content--left {
+    margin-left: calc(134px - 50px);
+}
+
 .sone-menu-content--left a:hover {
     cursor: pointer;
 }
