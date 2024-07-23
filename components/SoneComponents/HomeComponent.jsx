@@ -36,7 +36,7 @@ const HomeComponent = (data) => {
 
   return (
     <>
-      <Header slogan={data.data.excerpt} onLogoHover={onLogoHover} />
+      <Header slogan={data.data.headlines} onLogoHover={onLogoHover} />
       <div className={styles.SoneHome}>
         {/* random background video from array */}
         {videos &&

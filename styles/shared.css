@@ -134,8 +134,12 @@
   transition: transform 0.6s ease 0.3s;
 }
 
-.sone-menu-headline-mask:last-child span {
+.sone-menu-headline-mask:nth-child(3) span {
   transition: transform 0.6s ease 0.4s;
+}
+
+.sone-menu-headline-mask:last-child span {
+  transition: transform 0.6s ease 0.5s;
 }
 
 .sone-menu-headline--fadein .sone-menu-headline-mask span {

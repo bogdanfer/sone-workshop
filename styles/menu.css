@@ -101,7 +101,8 @@
 }
 
 .sone-menu-content[data-visible="true"] .sone-menu-content--right a {
-    line-height: 100%;
+    /* line-height: 100%; */
+    transform: translate3d(0,0,0);
 }
 
 .sone-menu-content[data-variant="white"] a {
@@ -147,12 +148,20 @@
     text-align: right;
 }
 
+.sone-menu-content--right li {
+    display: block;
+    overflow: hidden;
+}
+
 .sone-menu-content--right a {
+    display: block;
     /* adaptive font-size */
     font-size: clamp(2rem, 4vw, 8rem);
 
     color: #000;
+    transform: translate3d(0,100%,0);
     transition: all 0.4s ease;
+    transition-delay: calc(var(--animation-order) * 100ms);
 }
 
 @media only screen and (max-width: 600px) {

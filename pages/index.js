@@ -62,7 +62,7 @@ export async function getStaticProps({ locale }) {
     title,
     slug,
     language,
-    excerpt,
+    headlines,
     homeVideos,
     "_translations": *[_type == "translation.metadata" && references(^._id)].translations[].value->{
       slug,

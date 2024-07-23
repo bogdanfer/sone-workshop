@@ -34,20 +34,6 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
         ['sone-menu-headline--fadein']: showExcerpt
     });
 
-    // handle slogan for reveal animation
-    const splitTextIntoThreeParts = (text) => {
-        if (!text) return ['', '', ''];
-        
-        const words = text.split(' ');
-        const part1 = words.slice(0, Math.ceil(words.length / 3)).join(' ');
-        const part2 = words.slice(Math.ceil(words.length / 3), Math.ceil(words.length * 2 / 3)).join(' ');
-        const part3 = words.slice(Math.ceil(words.length * 2 / 3)).join(' ');
-    
-        return [part1, part2, part3];
-    };
-
-    const [part1, part2, part3] = splitTextIntoThreeParts(slogan);
-
     return (
         <>
             <div 
@@ -80,7 +66,7 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
                         {menuItems.map((item, index) => {
                             return (
                                 <li key={index}>
-                                    <Link className='sone-caps-text-large' href={item.link}>{item.title}</Link>
+                                    <Link className='sone-caps-text-large' style={{ '--animation-order': index+1 }} href={item.link}>{item.title}</Link>
                                 </li>
                             )
                         })}
@@ -95,15 +81,11 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
 
             {/* slogan */}
             <h1 className={headlineClasses} data-variant={variant}>
-                <span className='sone-menu-headline-mask'>
-                    <span>{part1}</span>
-                </span>
-                <span className='sone-menu-headline-mask'>
-                    <span>{part2}</span>
-                </span>
-                <span className='sone-menu-headline-mask'>
-                    <span>{part3}</span>
-                </span>
+                {slogan.map((item, index) => (
+                    <span key={index} className='sone-menu-headline-mask'>
+                        <span>{item}</span>
+                    </span>
+                ))}
             </h1>
 
         </>
