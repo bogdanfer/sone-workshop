@@ -16,12 +16,16 @@ const Header = ({ slogan, onLogoHover, variant, size }) => {
         <ul className="flex relative">
           <li 
             onMouseEnter={() => {
-              onLogoHover(true, true)
-              setShowExcerpt(true)
+              if (slogan) {
+                onLogoHover(true, true)
+                setShowExcerpt(true)
+              }
             }} 
             onMouseLeave={() => {
-              onLogoHover(false, false)
-              setShowExcerpt(false)
+              if (slogan) {
+                onLogoHover(false, false)
+                setShowExcerpt(false)
+              }
             }} 
           >
             <Link href={"/"}>

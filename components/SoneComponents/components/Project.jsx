@@ -21,8 +21,9 @@ const Project = ({ projectData, slogan, allProjects }) => {
     // Project States
     const [showExtras, setShowExtras] = useState(false);
 
-    console.log("project data: ", projectData?.slug[router.locale]?.current)
-    console.log("all projects slugs: ", allProjects)
+    // console.log("project data: ", projectData?.slug[router.locale]?.current)
+    // console.log("all projects slugs: ", allProjects)
+    // console.log(slogan)
 
     // Compose Next/Prev Slugs 
     const [ prevSlug, setPrevSlug] = useState(null);
@@ -54,7 +55,7 @@ const Project = ({ projectData, slogan, allProjects }) => {
             <div className='sone-project-wrapper'>
                 {/* Header */}
                 <Header slogan={slogan} onLogoHover={onLogoHover} variant="black" size="small" /> 
-
+            
                 {/* Content */}
                 {!isImgBlur &&
                     <div className='sone-project-content'>

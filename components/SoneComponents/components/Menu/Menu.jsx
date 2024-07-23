@@ -81,7 +81,7 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
 
             {/* slogan */}
             <h1 className={headlineClasses} data-variant={variant}>
-                {slogan.map((item, index) => (
+                {slogan && slogan.map((item, index) => (
                     <span key={index} className='sone-menu-headline-mask'>
                         <span>{item}</span>
                     </span>
