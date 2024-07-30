@@ -1,5 +1,5 @@
 .header-wrapper {
-    position: absolute;
+    position: fixed;
     top: 50px;
     left: 0;
     width: calc(100% - 100px);
@@ -127,6 +127,10 @@
     text-decoration: none;
 }
 
+.contact-link:hover {
+    color: #fff;
+}
+
 @media only screen and (max-width: 600px) {
     .sone-menu-content--left {
         margin-top: 20px;
@@ -158,7 +162,7 @@
 }
 
 .sone-menu-content--right a {
-    display: block;
+    display: inline-block;
     /* adaptive font-size */
     font-size: clamp(2rem, 4vw, 8rem);
 

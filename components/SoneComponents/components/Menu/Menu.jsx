@@ -66,7 +66,14 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
                         {menuItems.map((item, index) => {
                             return (
                                 <li key={index}>
-                                    <Link className='sone-caps-text-large' style={{ '--animation-order': index+1 }} href={item.link}>{item.title}</Link>
+                                    <Link className='sone-caps-text-large' style={{ '--animation-order': index+1 }} href={item.link}>
+                                        <span className='sone-text-unmask'>
+                                            {item.title}
+                                        </span>
+                                        <span className='sone-text-mask'>
+                                            {item.title}
+                                        </span>
+                                    </Link>
                                 </li>
                             )
                         })}

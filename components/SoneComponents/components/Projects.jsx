@@ -188,8 +188,8 @@ const Projects = ({ projectsData, slogan }) => {
               key={`project-${projectIndex}`}
               href={item.slug}
               className="sone-projects-item"
-              style={{ backgroundImage }}
             >
+              <div className='sone-project-item-bg' style={{ backgroundImage }}></div>
               <div className="sone-projects-item-content">
                 <h3>{item.title}</h3>
                 <h4>{item.concept}</h4>
@@ -278,6 +278,9 @@ const Projects = ({ projectsData, slogan }) => {
                             })}
                         </ul>
                 )}
+
+                {/* Back to top */}
+                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="sone-backtop">Back to Top</button>
 
             </div>
         </>

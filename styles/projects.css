@@ -7,6 +7,7 @@
 }
 
 .sone-projects-item {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,12 +17,11 @@
     min-height: 320px;
     margin-right: 20px;
     margin-bottom: 20px;
-    background-color: rgb(191, 191, 191);
-    background-size: cover;
-    background-position: center;
+    background-color: #000;
     cursor: pointer;
     text-decoration: none;
     color: #000;
+    overflow: hidden;
 }
 
 .sone-projects-item--letter {
@@ -62,6 +62,17 @@
     margin-right: 0;
 }
 
+.sone-project-item-bg {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-position: center;
+    background-size: cover;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
 .sone-projects-item-content {
     display: flex;
     flex-direction: column;
@@ -70,10 +81,10 @@
     padding: 30px;
     opacity: 0;
     color: #fff;
-    background-color: #000;
     transform: translate3d(0,20px,0);
+    transition: all 0.5s ease;
     filter: blur(1px);
-    transition: all 0.3s ease;
+    will-change: filter;
 }
 
 .sone-projects-item-content h3,
@@ -102,6 +113,11 @@
     opacity: 1;
     transform: translate3d(0,0,0);
     filter: blur(0);
+}
+
+.sone-projects-item:hover .sone-project-item-bg {
+    filter: blur(15px);
+    opacity: 0.9;
 }
 
 .sone-small-plus {
