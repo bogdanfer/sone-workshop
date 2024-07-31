@@ -72,39 +72,41 @@ const Project = ({ projectData, slogan, allProjects }) => {
 
                         {/* Right Content */}
                         <div className='sone-project-content--right'>
-                            <h2 className='sone-project-title'>{projectData?.title}</h2>
-                            <h3 className='sone-project-concept'>{projectData?.concept}</h3>
-                            <div className='sone-project-content-area' data-extra={showExtras}>
-                                <p className='sone-project-description'>
-                                    {projectData?.description}
-                                </p>
-                                <ul className='sone-project-extras'>
-                                    {projectData?.details.map((item, index) => (
-                                        <li key={index}>
-                                            <span>{item.title}</span>
-                                            <span>{item.value}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                            <div className='sone-sticky'>
+                                <h2 className='sone-project-title'>{projectData?.title}</h2>
+                                <h3 className='sone-project-concept'>{projectData?.concept}</h3>
+                                <div className='sone-project-content-area' data-extra={showExtras}>
+                                    <p className='sone-project-description'>
+                                        {projectData?.description}
+                                    </p>
+                                    <ul className='sone-project-extras'>
+                                        {projectData?.details.map((item, index) => (
+                                            <li key={index}>
+                                                <span>{item.title}</span>
+                                                <span>{item.value}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
 
-                            <button className='sone-project-button-toggle' data-isopen={showExtras} onClick={() => {
-                                const listHeight = document.querySelector('.sone-project-extras').offsetHeight;
-                                document.querySelector('.sone-project-content-area').style.height = !showExtras ? listHeight + 'px' : 'auto';
-                                setShowExtras(!showExtras)
-                            }}>
-                                    <span></span>
-                                    <span></span>
-                            </button>
+                                <button className='sone-project-button-toggle' data-isopen={showExtras} onClick={() => {
+                                    const listHeight = document.querySelector('.sone-project-extras').offsetHeight;
+                                    document.querySelector('.sone-project-content-area').style.height = !showExtras ? listHeight + 'px' : 'auto';
+                                    setShowExtras(!showExtras)
+                                }}>
+                                        <span></span>
+                                        <span></span>
+                                </button>
 
-                            <div className='sone-project-nav'>
-                                {prevSlug &&
-                                    <Link href={prevSlug}>Previous Project</Link>
-                                }
-                                
-                                {nextSlug &&
-                                    <Link href={nextSlug}>Next Project</Link>
-                                }
+                                <div className='sone-project-nav'>
+                                    {prevSlug &&
+                                        <Link href={prevSlug}>Previous Project</Link>
+                                    }
+                                    
+                                    {nextSlug &&
+                                        <Link href={nextSlug}>Next Project</Link>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
