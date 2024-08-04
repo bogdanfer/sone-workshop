@@ -28,6 +28,29 @@
     background-color: rgb(255, 255, 255);
 }
 
+@media only screen and (max-width: 600px) {
+    .sone-projects-wrapper {
+        display: block;
+        padding-bottom: 40px;
+    }
+
+    .sone-projects-content {
+        display: flex;
+        flex-direction: column;
+        width: calc(100vw - 40px);
+    }
+
+    .sone-projects-item {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+    }
+
+    .sone-projects-item--letter {
+        justify-content: center;
+    }
+}
+
 .sone-projects-item--letter .sone-projects-item-content {
     display: flex;
     justify-content: center;
@@ -73,6 +96,31 @@
     transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
+@media only screen and (max-width: 600px) {
+    .sone-project-item-bg {
+        position: relative;
+        top: 0;
+        left: 0;
+        min-height: 320px;
+        filter: none;
+    }
+
+    .sone-projects-item-content a,
+    .sone-projects-item-content h3,
+    .sone-projects-item-content h4 {
+        color: #000;
+    }
+
+    .sone-projects-item:not(.sone-projects-item--letter) .sone-projects-item-content h3,
+    .sone-projects-item:not(.sone-projects-item--letter) .sone-projects-item-content h4 {
+        font-size: 18px !important;
+    }
+
+    .sone-projects-item-content h4 {
+        margin-top: 6px !important;
+    }
+}
+
 .sone-projects-item-content {
     display: flex;
     flex-direction: column;
@@ -85,6 +133,16 @@
     transition: all 0.5s ease;
     filter: blur(1px);
     will-change: filter;
+}
+
+@media only screen and (max-width: 600px) {
+    .sone-projects-item:not(.sone-projects-item--letter) .sone-projects-item-content {
+        width: 100%;
+        padding: 20px 0;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        filter: none;
+    }
 }
 
 .sone-projects-item-content h3,

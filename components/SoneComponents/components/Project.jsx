@@ -1,11 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import Header from './Header/Header';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import useScrollPercentage from '../helpers/useScrollPercentage';
+import useMobileDetect from '../helpers/useMobileDetect';
+import ScrollProgressBar from '../helpers/ScrollProgressBar';
+import Lightbox from '../helpers/Lightbox';
 
 const Project = ({ projectData, slogan, allProjects }) => {
     const router = useRouter();
+
+    // Infinite image gallery
+    const [ imagesList, setImagesList ] = useState([]);
+    const isMobile = useMobileDetect();
+
+    useEffect(() => {
+        setImagesList(projectData?.projectImages);
+    }, [projectData]);
+
+    const scrollRef = useRef(null);
+    const scrollPercentage = useScrollPercentage(scrollRef);
+
+    useEffect(() => {
+        if (scrollPercentage > 99 && !isMobile) {
+            setImagesList((prevList) => [...prevList, ...prevList]);
+        }
+    }, [scrollPercentage]);
 
     // Menu Settings / States
     const [ isImgBlur, setIsImgBlur ] = useState(false);
@@ -20,10 +41,6 @@ const Project = ({ projectData, slogan, allProjects }) => {
 
     // Project States
     const [showExtras, setShowExtras] = useState(false);
-
-    // console.log("project data: ", projectData?.slug[router.locale]?.current)
-    // console.log("all projects slugs: ", allProjects)
-    // console.log(slogan)
 
     // Compose Next/Prev Slugs 
     const [ prevSlug, setPrevSlug] = useState(null);
@@ -52,22 +69,31 @@ const Project = ({ projectData, slogan, allProjects }) => {
 
     return (
         <>         
+            {isMobile &&
+                <ScrollProgressBar />
+            }
             <div className='sone-project-wrapper'>
                 {/* Header */}
-                <Header slogan={slogan} onLogoHover={onLogoHover} variant="black" size="small" /> 
+                <Header 
+                    slogan={slogan} 
+                    onLogoHover={onLogoHover} 
+                    variant="black" 
+                    size="small"
+                    isProject={!isMobile ? true : false}
+                /> 
             
                 {/* Content */}
                 {!isImgBlur &&
                     <div className='sone-project-content'>
                         {/* Left Content */}
-                        <div className='sone-project-content--left'>
-                            {projectData?.projectImages?.map((item, index) => {
-                                if (item.extension !== 'mp4') {
-                                    return (
-                                        <img src={item.fileUrl} alt={item.description} key={index} />
-                                    )
-                                }
-                            })}
+                        <div className='sone-project-content--left' ref={scrollRef}>
+                            {!isMobile && imagesList &&
+                                <Lightbox images={imagesList} />
+                            }
+
+                            {isMobile && imagesList &&
+                                <img className="sone-project-content-firstimg" src={imagesList[0]?.fileUrl} alt={imagesList[0]?.description} />
+                            }
                         </div>
 
                         {/* Right Content */}
@@ -109,6 +135,21 @@ const Project = ({ projectData, slogan, allProjects }) => {
                                 </div>
                             </div>
                         </div>
+
+                        {isMobile &&
+                            <>
+                                <div className='sone-project-content--left sone-project-content--left-second' ref={scrollRef}>
+                                    <Lightbox images={imagesList?.slice(1)} />
+                                </div>
+
+                                {/* Back to Projects */}
+                                <svg onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className='sone-project-backtotop' width="35" height="63" viewBox="0 0 35 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 2L32 31L2 61" stroke="black" strokeWidth="3"/>
+                                </svg>
+                                <Link href={"/projects"} className='sone-menu-backtoprojects sone-menu-backtoprojects--center'><span>Back to Projects</span></Link>
+                            </>
+                        }
+                        
                     </div>
                 }
             </div>

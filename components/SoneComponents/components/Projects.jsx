@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import Header from './Header/Header';
 import Link from 'next/link';
+import useMobileDetect from '../helpers/useMobileDetect';
+import ScrollProgressBar from '../helpers/ScrollProgressBar';
 
 const Projects = ({ projectsData, slogan }) => {
     // states
     const [ isImgBlur, setIsImgBlur ] = useState(false);
-
-    // console.log(slogan)
+    const isMobile = useMobileDetect();
 
     // image classes on blur
     const onLogoHover = (makeBlur) => {
@@ -17,8 +18,6 @@ const Projects = ({ projectsData, slogan }) => {
     const imgClasses = classNames('sone-image-background', {
         ['hasBlur']: isImgBlur,
     });
-
-    // console.log("projects: ", projectsData)
 
     // Filters 
     const [ showFilter, setShowFilter ] = useState(true);
@@ -203,15 +202,20 @@ const Projects = ({ projectsData, slogan }) => {
 
     return (
         <>         
+            {isMobile &&
+                <ScrollProgressBar theme="white" />
+            }
             <div className='sone-projects-wrapper'>
                 {/* Header */}
                 <Header slogan={slogan} onLogoHover={onLogoHover} variant="black" size="small" showFilterMenu="true" /> 
                 
                 {/* Mobile Filter Menu */}
-                <button className='sone-mobile-filter-menu' onClick={() => setShowMobileFilter(!showMobileFilter)} data-open={showMobileFilter}>
-                    <span>
-                    </span>
-                </button>
+                {isImgBlur ? null : (
+                    <button className='sone-mobile-filter-menu' onClick={() => setShowMobileFilter(!showMobileFilter)} data-open={showMobileFilter}>
+                        <span>
+                        </span>
+                    </button>
+                )}
 
                 {/* Filter */}
                 {isImgBlur ? null : (
@@ -280,7 +284,11 @@ const Projects = ({ projectsData, slogan }) => {
                 )}
 
                 {/* Back to top */}
-                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="sone-backtop">Back to Top</button>
+                {isImgBlur ? null : (
+                    <svg onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className='sone-project-backtotop' width="35" height="63" viewBox="0 0 35 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 2L32 31L2 61" stroke="black" strokeWidth="3"/>
+                    </svg>
+                )}
 
             </div>
         </>

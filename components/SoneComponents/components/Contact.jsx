@@ -6,11 +6,15 @@ import classNames from 'classnames';
 
 import Header from './Header/Header';
 
+import useMobileDetect from '../helpers/useMobileDetect';
+import ScrollProgressBar from '../helpers/ScrollProgressBar';
+
 const Contact = ({ contactData, slogan }) => {
     console.log("data: ", contactData)
 
     // states
     const [ isImgBlur, setIsImgBlur ] = useState(false);
+    const isMobile = useMobileDetect();
 
     // background image 
     const builder = imageUrlBuilder(myConfiguredSanityClient);
@@ -31,6 +35,9 @@ const Contact = ({ contactData, slogan }) => {
 
     return (
         <>         
+            {isMobile &&
+                <ScrollProgressBar theme="white" />
+            }
             <div className='sone-contact-wrapper'>
                 {/* Header */}
                 <Header slogan={slogan} onLogoHover={onLogoHover} variant="black" size="small" /> 

@@ -1,0 +1,18 @@
+/* Ensure the progress container is styled appropriately */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  z-index: 999;
+  background-color: black;
+  mix-blend-mode: difference;
+}
+
+/* Style the progress bar */
+.progress-bar {
+  height: 100%;
+  background-color: white; /* Use currentColor to adapt to context */
+  transition: width 0.2s ease;
+}

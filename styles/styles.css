@@ -14,6 +14,9 @@
 @import "project";
 @import "about";
 
+@import "scrollProgressBar";
+@import "lightbox";
+
 a:hover,
 button:hover {
     cursor: pointer;

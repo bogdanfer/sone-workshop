@@ -1,0 +1,84 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .lightbox-overlay img:hover {
+    cursor: zoom-out;
+  }
+  
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .close-button,
+  .nav-button {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+  }
+  
+  .close-button {
+    top: 50px;
+    right: 50px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    color: white;
+    mix-blend-mode: difference;
+  }
+  
+  .nav-button {
+    top: 50%;
+    transform: translateY(-50%);
+    mix-blend-mode: difference;
+  }
+  
+  .prev-button {
+    left: 50px;
+  }
+
+  .prev-button svg {
+    transform: rotate(180deg);
+  }
+  
+  .next-button {
+    right: 50px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .close-button {
+      top: 25px;
+      right: 25px;
+    }
+
+    .nav-button svg {
+      height: 32px;
+    }
+
+    .prev-button {
+      left: 25px;
+    }
+    
+    .next-button {
+      right: 25px;
+    }
+  }
