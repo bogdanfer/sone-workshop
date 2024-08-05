@@ -10,8 +10,6 @@ import useMobileDetect from '../helpers/useMobileDetect';
 import ScrollProgressBar from '../helpers/ScrollProgressBar';
 
 const Contact = ({ contactData, slogan }) => {
-    console.log("data: ", contactData)
-
     // states
     const [ isImgBlur, setIsImgBlur ] = useState(false);
     const isMobile = useMobileDetect();
