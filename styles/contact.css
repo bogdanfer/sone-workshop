@@ -249,7 +249,8 @@
   }
   
   .soneHS__Input:checked + .soneHS__Label {
-    transform: rotate(180deg);
+    /* transform: rotate(180deg); */
+    transform: scale(0.8);
   }
   
   .soneHS__Input ~ .soneHS__Overlay {
@@ -271,6 +272,10 @@
     display: block;
   }
 
+  .soneHS__Label:hover {
+    transform: scale(0.8);
+  }
+
   .soneHS__Label:hover ~ .soneHS__Modal__Content {
     opacity: 1;
     visibility: visible;
@@ -283,20 +288,6 @@
     -ms-filter: blur(2px);
     filter: blur(2px);
   }
-  
-  /* .soneHS__Blur .soneHS__Input {
-    display: none;
-  } */
-  
-  /* .soneHS__Blur .soneHS__Input:checked, 
-  .soneHS__Blur .soneHS__Input:hover {
-    display: inline-block;
-  }
-  
-  .soneHS__Blur .soneHS__Input:checked + .soneHS__Label {
-    opacity: 1;
-    pointer-events: auto;
-  } */
   
   @media (min-width: 768px) {
     .soneHS__Input + .soneHS__Label,
@@ -331,50 +322,5 @@
       top: 51%;
       left: 5%;
     }
-
-
-    /* .soneHS__Wrapper .soneHS__Modal__Content {
-      bottom: auto !important;
-      left: 50% !important;
-      top: 50% !important;
-      transform: translate(-50%, -50%) !important;
-    }
-  
-    .soneHS__Wrapper .soneHS__Modal__Content .soneHS__Close {
-      background: #ec2256;
-      border-radius: 50%;
-      cursor: pointer;
-      display: block;
-      height: 20px;
-      position: absolute;
-      right: -5px;
-      top: -5px;
-      transition: all 300ms ease;
-      transform: rotate(45deg);
-      width: 20px;
-      z-index: 5;
-    }
-  
-    .soneHS__Wrapper .soneHS__Modal__Content .soneHS__Close:before,
-    .soneHS__Wrapper .soneHS__Modal__Content .soneHS__Close:after {
-      background: #fff;
-      content: "";
-      cursor: pointer;
-      display: block;
-      left: 50%;
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-  
-    .soneHS__Wrapper .soneHS__Modal__Content .soneHS__Close:before {
-      height: 2px;
-      width: 40%;
-    }
-  
-    .soneHS__Wrapper .soneHS__Modal__Content .soneHS__Close:after {
-      height: 40%;
-      width: 2px;
-    } */
   }
   
