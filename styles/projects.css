@@ -4,6 +4,7 @@
     grid-gap: 20px;
     width: calc(100vw - 100px);
     margin: 50px auto 0;
+    transition: filter 0.3s ease;
 }
 
 .sone-projects-item {
@@ -212,11 +213,19 @@
 
 /* Filter */
 .sone-main-filters {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 100px auto 0;
+    width: 70vw;
+    margin: 80px auto 0;
+    transition: filter 0.3s ease;
+    z-index: 101;
+}
+
+.sone-main-filters.hasBlur {
+    filter: blur(10px)
 }
 
 .sone-main-filters li:not(:last-child) {
@@ -264,6 +273,7 @@
     min-width: 90vw;
     overflow-x: scroll;
     margin: 50px auto 0;
+    transition: filter 0.3s ease;
 }
 
 @media only screen and (max-width: 600px) {

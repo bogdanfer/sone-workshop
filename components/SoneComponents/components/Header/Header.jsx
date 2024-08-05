@@ -15,7 +15,7 @@ const Header = ({ slogan, onLogoHover, variant, size, isProject }) => {
       <nav className="header-nav">
         <ul className="flex relative">
           {isProject 
-            ? <Link href={"/"} className='sone-menu-backtoprojects'><span>Back to Projects</span></Link>
+            ? <Link href={"/projects"} className='sone-menu-backtoprojects'><span>Back to Projects</span></Link>
              
             : <li 
               onMouseEnter={() => {

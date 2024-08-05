@@ -26,12 +26,12 @@ const MeLlamoArtPage = ({
     <>
       <NextSeo
         // url={ogUrl}
-        title="SONE Workshop"
-        description="SONE Workshop"
+        title="sŌne | Building Workshop"
+        description="sŌne | Building Workshop"
         openGraph={{
           // url: ogUrl,
           // title: ogTitle,
-          description: "SONE Workshop",
+          description: "sŌne | Building Workshop",
           // images: [
           //   {
           //     url: ogImage,

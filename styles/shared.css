@@ -192,3 +192,7 @@
   background: transparent;
   border: 0;
 }
+
+.hasBlur {
+  filter: blur(20px);
+}

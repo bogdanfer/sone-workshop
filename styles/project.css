@@ -213,6 +213,10 @@
     margin-bottom: 50px;
 }
 
+.sone-project-backtotop {
+    display: none;
+}
+
 @media only screen and (max-width: 600px) {
     .sone-project-nav {
         display: none;

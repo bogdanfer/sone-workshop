@@ -15,7 +15,7 @@ const Projects = ({ projectsData, slogan }) => {
         setIsImgBlur(makeBlur);
     }
 
-    const imgClasses = classNames('sone-image-background', {
+    const blurClass = classNames('', {
         ['hasBlur']: isImgBlur,
     });
 
@@ -218,70 +218,68 @@ const Projects = ({ projectsData, slogan }) => {
                 )}
 
                 {/* Filter */}
-                {isImgBlur ? null : (
-                    <ul className='sone-main-filters' data-islist={showList} data-mainfilter={!showSubFilter}>
-                        {showFilter && 
-                            mainFilters.map((item, index) => (
-                                <li key={index}>
-                                    <span onClick={() => handleFilters(item)}>{item}</span>
-                                </li>
-                            ))
-                        }
-                        
-                        {showSubFilter &&
-                            subFilters.map((item, index) => (
-                                <li key={index} >
-                                    <span onClick={() => handleSubFilters(item)}>{item}</span>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                )}
+                <ul className={`sone-main-filters ${blurClass}`} data-islist={showList} data-mainfilter={!showSubFilter}>
+                    {showFilter && 
+                        mainFilters.map((item, index) => (
+                            <li key={index}>
+                                <span onClick={() => handleFilters(item)}>{item}</span>
+                            </li>
+                        ))
+                    }
+                    
+                    {showSubFilter &&
+                        subFilters.map((item, index) => (
+                            <li key={index} >
+                                <span onClick={() => handleSubFilters(item)}>{item}</span>
+                            </li>
+                        ))
+                    }
+                </ul>
+                
 
                 {/* Content */}
-                {isImgBlur ? null : (
-                    !showList
-                        ? 
-                        <div className='sone-projects-content'>
-                            {itemsWithBlocks}
-                        </div>
-                        : 
-                        <ul className='sone-project-content-list'>
-                            <div className='sone-list-background-full'></div>
-                            <li className='sone-project-content-list-head'>
-                                <span className='sone-list-date' onClick={() => sortProjectsByDetail('Year')}>date</span>
-                                <span className='sone-list-title' onClick={() => sortProjectsByProperty('title')}>title</span>
-                                <span className='sone-list-location' onClick={() => sortProjectsByDetail('Location')}>location</span>
-                                <span className='sone-list-typology' onClick={() => sortProjectsByDetail('Typology')}>typology</span>
-                                <span className='sone-list-sqm' onClick={() => sortProjectsByDetail('SQM')}>SQM</span>
-                                <span className='sone-list-budget' onClick={() => sortProjectsByDetail('Budget')}>budget</span>
-                                <span className='sone-list-status' onClick={() => sortProjectsByDetail('Status')}>status</span>
-                            </li>
-                            {projects.map((item, index) => {
-                                let backgroundImage = null;
-                                if (item.thumbnail?.fileUrl) {
-                                    backgroundImage = `url(${item.thumbnail.fileUrl})`;
-                                } else {
-                                    const firstImgGallery = item.projectImages.find(image => image.extension !== 'mp4');
-                                    backgroundImage = `url(${firstImgGallery.fileUrl})`;
-                                }    
-                                
-                                return (
-                                    <li key={index} onMouseEnter={() => handleMouseOver('in', backgroundImage)} onMouseLeave={() => handleMouseOver('out')}>
-                                        <a href={item.slug}>
-                                            <span className='sone-list-date'>{getValueByTitle(item.details, 'Year')}</span>
-                                            <span className='sone-list-title'>{item.title}</span>
-                                            <span className='sone-list-location'>{getValueByTitle(item.details, 'Location')}</span>
-                                            <span className='sone-list-typology'>{getValueByTitle(item.details, 'Typology')}</span>
-                                            <span className='sone-list-sqm'>{getValueByTitle(item.details, 'SQM')}</span>
-                                            <span className='sone-list-budget'>{getValueByTitle(item.details, 'Budget')}</span>
-                                            <span className='sone-list-status'>{getValueByTitle(item.details, 'Status')}</span>
-                                        </a>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                )}
+                {!showList
+                    ? 
+                    <div className={`sone-projects-content ${blurClass}`}>
+                        {itemsWithBlocks}
+                    </div>
+                    : 
+                    <ul className={`sone-project-content-list ${blurClass}`}>
+                        <li className='sone-project-content-list-head'>
+                            <span className='sone-list-date' onClick={() => sortProjectsByDetail('Year')}>date</span>
+                            <span className='sone-list-title' onClick={() => sortProjectsByProperty('title')}>title</span>
+                            <span className='sone-list-location' onClick={() => sortProjectsByDetail('Location')}>location</span>
+                            <span className='sone-list-typology' onClick={() => sortProjectsByDetail('Typology')}>typology</span>
+                            <span className='sone-list-sqm' onClick={() => sortProjectsByDetail('SQM')}>SQM</span>
+                            <span className='sone-list-budget' onClick={() => sortProjectsByDetail('Budget')}>budget</span>
+                            <span className='sone-list-status' onClick={() => sortProjectsByDetail('Status')}>status</span>
+                        </li>
+                        {projects.map((item, index) => {
+                            let backgroundImage = null;
+                            if (item.thumbnail?.fileUrl) {
+                                backgroundImage = `url(${item.thumbnail.fileUrl})`;
+                            } else {
+                                const firstImgGallery = item.projectImages.find(image => image.extension !== 'mp4');
+                                backgroundImage = `url(${firstImgGallery.fileUrl})`;
+                            }    
+                            
+                            return (
+                                <li key={index} onMouseEnter={() => handleMouseOver('in', backgroundImage)} onMouseLeave={() => handleMouseOver('out')}>
+                                    <a href={item.slug}>
+                                        <span className='sone-list-date'>{getValueByTitle(item.details, 'Year')}</span>
+                                        <span className='sone-list-title'>{item.title}</span>
+                                        <span className='sone-list-location'>{getValueByTitle(item.details, 'Location')}</span>
+                                        <span className='sone-list-typology'>{getValueByTitle(item.details, 'Typology')}</span>
+                                        <span className='sone-list-sqm'>{getValueByTitle(item.details, 'SQM')}</span>
+                                        <span className='sone-list-budget'>{getValueByTitle(item.details, 'Budget')}</span>
+                                        <span className='sone-list-status'>{getValueByTitle(item.details, 'Status')}</span>
+                                    </a>
+                                </li>
+                            );
+                        })}
+                        <div className='sone-list-background-full'></div>
+                    </ul>
+                }
 
                 {/* Back to top */}
                 {isImgBlur ? null : (
