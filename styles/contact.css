@@ -70,6 +70,10 @@
     line-height: 100%;
 }
 
+.sone-contact-content a {
+  color: #000;
+}
+
 @media only screen and (max-width: 600px) {
     .sone-contact-content h3 {
         width: 100%;
