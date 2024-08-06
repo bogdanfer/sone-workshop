@@ -121,7 +121,7 @@
     line-height: 18px;
     
     color: #fff;
-    filter: contrast(0.5) brightness(0.5);
+    /* filter: contrast(0.5) brightness(0.5); */
 
     text-decoration: none;
     text-transform: uppercase;
@@ -246,7 +246,7 @@
 
 .logo-svg g {
     fill: white;
-    filter: contrast(0.5);
+    /* filter: contrast(0.5) brightness(0.5); */
 }
 
 @media only screen and (max-width: 600px) {
