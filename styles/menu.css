@@ -5,10 +5,11 @@
     width: calc(100% - 100px);
     padding: 0 50px;
     z-index: 100;
+    mix-blend-mode: difference;
+    color: #fff;
 
     /* backface-visibility: hidden;
     will-change: transform;
-    mix-blend-mode: difference;
     color: #fff; */
 }
 
@@ -118,7 +119,10 @@
     font-style: normal;
     font-size: 15px;
     line-height: 18px;
-    color: #000;
+    
+    color: #fff;
+    filter: contrast(0.5) brightness(0.5);
+
     text-decoration: none;
     text-transform: uppercase;
     -webkit-font-smoothing: antialiased;
@@ -238,6 +242,11 @@
     width: 134px;
     height: 50px;
     /* filter: saturate(0) contrast(1) brightness(1); */
+}
+
+.logo-svg g {
+    fill: white;
+    filter: contrast(0.5);
 }
 
 @media only screen and (max-width: 600px) {
