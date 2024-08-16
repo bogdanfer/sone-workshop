@@ -4,7 +4,10 @@
 }
 
 .sone-about-wrapper .sone-image-background {
+    left: 0;
+    top: 0;
     max-height: 76vh;
+    max-width: 100vw;
 }
 
 .sone-letter-o-mask {
@@ -21,6 +24,25 @@
 
 .sone-letter-o {
     margin-right: -75px;
+    transition: all 0.3s ease;
+}
+
+.sone-about-sticky-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: #DAD3C2;
+}
+
+.sone-about-sticky-wrapper .sone-letter-o {
+    position: sticky;
+    top: 20dvh;
+    bottom: 0;
+    height: 50vh;
+    margin-bottom: 20vh;
+    transform: translate3d(0,200px,0);
 }
 
 .sone-about-section {
@@ -30,19 +52,13 @@
     align-items: center;
 }
 
-/* 1.Section*/
-.sone-about-section-one {
-    position: relative;
-    width: calc(100vw - 100px);
-    margin-left: 100px;
-    margin-top: calc(76vh + 150px);
-    background: gray;
-}
-
-.sone-about-section-one h3 {
+.sone-about-section h3 {
     font-family: neue-haas-grotesk-display, sans-serif;
     font-weight: 500;
-    font-size: 100px;
+
+    /* adaptive font-size */
+    font-size: clamp(2rem, 5.2vw, 8rem);
+
     line-height: 100%;
     font-style: normal;
     color: #000;
@@ -50,6 +66,54 @@
     text-transform: uppercase;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-about-text-holder {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    padding-bottom: 100px;
+    text-align: left;
+}
+
+.sone-about-text-holder h4 {
+    display: block;
+    padding-right: 150px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    font-style: normal;
+    color: #000;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-about-text-holder h4 b {
+    font-weight: 700;
+}
+
+.sone-about-text-holder p {
+    display: block;
+    margin-top: 50px;
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    font-style: normal;
+    color: #000;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 1.Section*/
+.sone-about-section-one {
+    position: relative;
+    width: calc(100vw - 100px);
+    margin-left: 100px;
+    margin-top: calc(76vh + 150px);
 }
 
 .sone-about-img-1 {
@@ -64,47 +128,262 @@
 /* 2.Section */
 .sone-about-section-two {
     position: relative;
+    align-items: flex-start;
     width: calc(100vw - 200px);
-    margin: 100px auto 0;
-    background: gainsboro;
+    margin: 100px auto -100px;
+    z-index: 2;
 }
 
 .sone-about-section-two .sone-about-img-2 {
     display: block;
     width: 61%;
+    aspect-ratio: 1060 / 760;
+    object-fit: cover;
 }
 
-.sone-about-section-two .sone-about-text-holder {
+/* 3.Section */
+.sone-about-section--three {
+    position: relative;
+    align-items: flex-start;
+    width: calc(100vw - 100px);
+    margin-top: calc((50vh + 20vh) * -1);
+    padding: 100px 0 100px 100px;
+    z-index: 4;
+}
+
+.sone-about-section--three h3 {
+    position: relative;
+    display: block;
+    width: 61%;
+    padding-top: 100px;
+    padding-left: 100px;
+    z-index: 4;
+}
+
+.sone-about-img-3 {
+    display: flex;
+    width: 34%;
+    aspect-ratio: 656 / 420;
+    object-fit: cover;
+    margin-left: 100px;
+    text-align: right;
+}
+
+/* 4.Section */
+.sone-about-section--four {
+    position: relative;
+    align-items: flex-start;
+    width: 100vw;
+    padding: 0;
+    /* background: #DAD3C2; */
+    z-index: 3;
+}
+
+.sone-about-section--four .sone-about-text-holder {
+    z-index: 3;
+}
+
+.sone-about-section--four::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    z-index: 2;
+}
+
+/* .sone-about-section--four .sone-letter-o {
+    position: absolute;
+    top: -45%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 27vw;
+    z-index: 2;
+} */
+
+.sone-about-img-4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 34%;
+    aspect-ratio: 656 / 1054;
+    object-fit: cover;
+    margin-right: 100px;
+    text-align: left;
+    z-index: 3;
+}
+
+.sone-about-section--four .sone-about-text-holder {
+    width: 26%;
+    margin-left: calc(34% + 100px);
+}
+
+.sone-about-img-5 {
+    display: flex;
+    width: 21%;
+    aspect-ratio: 406 / 546;
+    object-fit: cover;
+    margin-top: 160px;
+    margin-left: 50px;
+    margin-right: 50px;
+    z-index: 3;
+}
+
+/* 5.Section */
+.sone-about-section--five {
+    position: relative;
+    align-items: flex-start;
+    width: 100vw;
+    padding: 50px 0 0 0;
+    background: #fff;
+}
+
+.sone-about-section--five h3 {
+    width: 43%;
+    margin-left: calc(34% + 100px);
+}
+
+/* 6.Section */
+.sone-about-section--six {
+    position: relative;
+    align-items: flex-start;
+    width: calc(100vw - 250px);
+    padding: 100px 50px 150px 200px;
+    background: #fff;
+}
+
+.sone-about-section--six .sone-about-text-holder {
+    width: 27%;
+}
+
+.sone-about-img-6 {
+    display: flex;
+    width: 44%;
+    aspect-ratio: 858 / 508;
+    object-fit: cover;
+    z-index: 3;
+}
+
+/* 7.Section */
+.sone-about-img-7 {
+    width: 100vw;
+    height: auto;
+}
+
+/* 8.Section */
+.sone-about-section--eight {
+    width: 100vw;
+    padding: 150px 0 150px 0;
+    align-items: flex-start;
+    z-index: 3;
+    background-color: #fff;
+}
+
+.sone-about-section-people--left {
     display: flex;
     flex-direction: column;
-    margin-left: 100px;
-    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 40%;
+    margin-left: 200px;
 }
 
-.sone-about-section-two .sone-about-text-holder h4 {
+.sone-about-section-people--left svg {
     display: block;
-    padding-right: 150px;
+    margin-top: 100px;
+    width: 100%;
+    max-width: 330px;
+}
+
+.sone-about-section-people--left p {
+    margin-top: 50px;
     font-family: neue-haas-grotesk-display, sans-serif;
     font-weight: 500;
-    font-size: 36px;
+
+    /* adaptive font-size */
+    font-size: clamp(2rem, 2.1vw, 8rem);
+
+    line-height: 110%;
+    font-style: normal;
+    color: #000;
+    text-decoration: none;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-about-section-people--left p b {
+    font-weight: 600;
+}
+
+.sone-about-section-people--right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 35%;
+    margin-left: 200px;
+    margin-right: 100px;
+}
+
+.sone-about-section-people-block {
+    margin-bottom: 100px;
+}
+
+.sone-about-section-people--right h5,
+.sone-about-section-people--right h6,
+.sone-about-section-people--right p,
+.sone-about-section-people--right span {
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 500;
     line-height: 100%;
     font-style: normal;
     color: #000;
     text-decoration: none;
+    text-transform: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.sone-about-section-two .sone-about-text-holder p {
-    display: block;
-    margin-top: 50px;
-    font-family: neue-haas-grotesk-display, sans-serif;
-    font-weight: 500;
+.sone-about-section-people--right h5 {
+    font-size: 26px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.sone-about-section-people--right h6,
+.sone-about-section-people--right p,
+.sone-about-section-people--right span {
     font-size: 20px;
     line-height: 26px;
-    font-style: normal;
-    color: #000;
-    text-decoration: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+}
+
+.sone-about-section-people--right h6 {
+    text-decoration: underline;
+}
+
+.sone-about-section-people--right p {
+    margin-top: 30px;
+}
+
+.sone-about-section-people--right span {
+    display: block;
+    margin-top: 30px;
+}
+
+.sone-about-section-people--right span b {
+    font-weight: 600;
+}
+
+/* 10.Section */
+.sone-about-section--ten {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0 150px;
+    background: #DAD3C2;
 }
