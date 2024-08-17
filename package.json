@@ -14,6 +14,7 @@
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
     "classnames": "^2.5.1",
+    "lenis": "^1.1.9",
     "negotiator": "^0.6.3",
     "next": "13.0.0",
     "next-seo": "^4.28.1",

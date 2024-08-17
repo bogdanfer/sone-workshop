@@ -4,15 +4,9 @@ import imageUrlBuilder from "@sanity/image-url";
 import classNames from 'classnames';
 import Header from './Header/Header';
 
-import FixedOnScroll from './FixedOnScroll';
-
 const About = ({ aboutData, slogan }) => {
     // states
     const [ isImgBlur, setIsImgBlur ] = useState(false);
-
-    //
-    const topMarkerRef = useRef(null);
-    const bottomMarkerRef = useRef(null);
 
     // console.log("aboutData: ", aboutData)
 
@@ -31,6 +25,93 @@ const About = ({ aboutData, slogan }) => {
     const onLogoHover = (makeBlur) => {
         setIsImgBlur(makeBlur);
     }
+
+    // img slide 
+    useEffect(() => {
+      const handleScroll = () => {
+        const scrollY = window.scrollY;
+        const images = document.querySelectorAll('.sliding-image');
+  
+        images.forEach((image) => {
+          if (isInViewport(image)) {
+            const viewportHeight = window.innerHeight;
+            const elementTop = image.getBoundingClientRect().top;
+            const elementHeight = image.clientHeight;
+  
+            const startScroll = elementTop + scrollY - viewportHeight;
+            const endScroll = elementTop + scrollY + elementHeight;
+  
+            const slideInPercentage = Math.min(
+              Math.max((scrollY - startScroll) / (endScroll - startScroll), 0),
+              1
+            );
+
+            const imgOnLeftHasClass = image.classList.contains('sliding-image--left');
+            const imgOnLeft = imgOnLeftHasClass ? -1 : 1;
+            
+            if (imgOnLeftHasClass) {
+              if (-50 + slideInPercentage * 100 <= 0) {
+                image.style.transform = `translateX(${(-50 + slideInPercentage * 100)}%)`;
+              }
+            } else {
+              if (50 - slideInPercentage * 100 >= 0) {
+                // image1Ref.current.style.transform = `translateX(${(50 - slideInPercentage * 100)}%)`;
+                image.style.transform = `translateX(${(50 - slideInPercentage * 100 * imgOnLeft)}%)`;
+              }
+            }
+
+          } else {
+            // image.style.transform = 'translateX(100%)';
+          }
+        });
+      };
+  
+      const isInViewport = (element) => {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+
+    // useEffect(() => {
+    //   const handleScroll = () => {
+    //     const scrollPosition = window.scrollY;
+    //     setScrollY(scrollPosition);
+    //   };
+  
+    //   window.addEventListener('scroll', handleScroll);
+  
+    //   return () => {
+    //     window.removeEventListener('scroll', handleScroll);
+    //   };
+    // }, []);
+  
+    // useEffect(() => {
+    //   if (image1Ref.current) {
+    //     const viewportHeight = window.innerHeight;
+    //     const elementTop = image1Ref.current.getBoundingClientRect().top;
+    //     const elementHeight = image1Ref.current.clientHeight;
+  
+    //     // Calculate how far the image should slide based on scroll position
+    //     const startScroll = elementTop + scrollY - viewportHeight;
+    //     const endScroll = elementTop + scrollY + elementHeight;
+  
+    //     const slideInPercentage = Math.min(
+    //       Math.max((scrollY - startScroll) / (endScroll - startScroll), 0),
+    //       1
+    //     );
+  
+    //     // Apply transform based on slideInPercentage
+    //     if (50 - slideInPercentage * 100 >= 0) {
+    //       image1Ref.current.style.transform = `translateX(${(50 - slideInPercentage * 100)}%)`;
+    //     }
+    //   }
+    // }, [scrollY]);
 
     const imgClasses = classNames('sone-image-background', {
         ['hasBlur']: isImgBlur,
@@ -55,12 +136,12 @@ const About = ({ aboutData, slogan }) => {
                         {/* 1.Section */}
                         <div className='sone-about-section sone-about-section-one'>
                           <h3>Building local narratives in global stories</h3>
-                          <img className='sone-about-img-1' src={backgroundImage ? backgroundImage : ''} alt="" />
+                          <img className='sone-about-img-1 sliding-image' src={backgroundImage ? backgroundImage : ''} alt="" />
                         </div>
 
                         {/* 2.Section */}
                         <div className='sone-about-section sone-about-section-two'>
-                          <img className='sone-about-img-2' src={backgroundImage ? backgroundImage : ''} alt="" />
+                          <img className='sone-about-img-2 sliding-image sliding-image--left' src={backgroundImage ? backgroundImage : ''} alt="" />
                           <div className='sone-about-text-holder'>
                             <h4>sŌne is an architecture practice based in Yangon and Paris.</h4>
                             <p>Our approach is grounded in a commitment to impactful architecture, woven into space and time through a sustainable ecological, technical, and social lens. Each project is an opportunity to embody and preserve the singularity and diversity of the physical territories and cultural expressions it engages with. By exploring the margins and engaging with global peripheries, we aim to produce architectures and objects conceived as spaces of representation, struggle, and expression.
@@ -75,12 +156,12 @@ const About = ({ aboutData, slogan }) => {
                           {/* 3.Section */}
                           <div className='sone-about-section sone-about-section--three'>
                             <h3>Towards a sustainable Architecture</h3>
-                            <img className='sone-about-img-3' src={backgroundImage ? backgroundImage : ''} alt="" />
+                            <img className='sone-about-img-3 sliding-image' src={backgroundImage ? backgroundImage : ''} alt="" />
                           </div>
 
                           {/* 4.Section */}
                           <div className='sone-about-section sone-about-section--four'>
-                            <img className='sone-about-img-4' src={backgroundImage ? backgroundImage : ''} alt="" />
+                            <img className='sone-about-img-4 sliding-image sliding-image--left' src={backgroundImage ? backgroundImage : ''} alt="" />
 
                             <div className='sone-about-text-holder'>
                               <h4><b>sŌne</b> commits to a post-carbon built environment.</h4>
@@ -89,9 +170,8 @@ const About = ({ aboutData, slogan }) => {
                               Working across various climates, we implement low-tech and bioclimatic principles to craft buildings that are both efficient and low-carbon. We prioritize the use of regional know-how and materials to enhance local expertise and minimize project-generated emissions.</p>
                             </div>
 
-                            <img className='sone-about-img-5' src={backgroundImage ? backgroundImage : ''} alt="" />
+                            <img className='sone-about-img-5 sliding-image' src={backgroundImage ? backgroundImage : ''} alt="" />
                             
-                            {/* <FixedOnScroll topMarkerRef={topMarkerRef} bottomMarkerRef={bottomMarkerRef} /> */}
                             {/* <svg className="sone-letter-o" fill="none" viewBox="0 0 41 50"><path d="M34.65 44.03C30.98 48.01 26.11 50 20.05 50c-6.06 0-10.92-1.99-14.57-5.97C1.82 40.05 0 34.98 0 28.8s1.83-11.25 5.48-15.23C9.13 9.59 13.99 7.6 20.05 7.6c6.06 0 10.93 1.99 14.6 5.97 3.67 3.98 5.51 9.05 5.51 15.23s-1.84 11.25-5.51 15.23ZM20.1 41.81c3.18 0 5.61-1.2 7.3-3.61 1.69-2.41 2.53-5.54 2.53-9.4 0-3.86-.84-7.01-2.53-9.43s-4.12-3.64-7.3-3.64c-3.18 0-5.58 1.21-7.3 3.64-1.72 2.42-2.59 5.57-2.59 9.43 0 3.86.86 6.95 2.59 9.38 1.72 2.42 4.16 3.64 7.3 3.64v-.01ZM11.92 5.74V0h16.25v5.74H11.92Z" fill="#fff"/></svg> */}
                           </div>
 
@@ -109,7 +189,7 @@ const About = ({ aboutData, slogan }) => {
                               Working across various climates, we implement low-tech and bioclimatic principles to craft buildings that are both efficient and low-carbon. We prioritize the use of regional know-how and materials to enhance local expertise and minimize project-generated emissions.</p>
                             </div>
 
-                            <img className='sone-about-img-6' src={backgroundImage ? backgroundImage : ''} alt="" />
+                            <img className='sone-about-img-6 sliding-image' src={backgroundImage ? backgroundImage : ''} alt="" />
                           </div>
 
                           {/* 7.Section */}

@@ -1,5 +1,6 @@
 import About from "@components/SoneComponents/components/About";
 import sanity from "@lib/sanity";
+import SmoothScrolling from "@components/SoneComponents/components/SmoothScrolling";
 
 const AboutPage = ({ pageData, headerData }) => {
   return <About aboutData={pageData} slogan={headerData.headlines}/>;

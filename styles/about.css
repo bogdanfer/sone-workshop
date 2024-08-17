@@ -1,6 +1,7 @@
 .sone-about-wrapper {
     display: block;
     width: 100vw;
+    /* overflow-x: hidden; */
 }
 
 .sone-about-wrapper .sone-image-background {
@@ -41,7 +42,7 @@
     top: 20dvh;
     bottom: 0;
     height: 50vh;
-    margin-bottom: 20vh;
+    margin-bottom: 40vh;
     transform: translate3d(0,200px,0);
 }
 
@@ -386,4 +387,14 @@
     align-items: center;
     padding: 100px 0 150px;
     background: #DAD3C2;
+}
+  
+.sliding-image {
+    position: relative;
+    transform: translateX(50%);
+    transition: transform 0.1s linear; /* Shorter and smoother movement */
+}
+
+.sliding-image--left {
+    transform: translateX(-50%);
 }
