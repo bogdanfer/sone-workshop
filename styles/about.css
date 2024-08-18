@@ -130,7 +130,7 @@
 
 .sone-about-text-holder h4 {
     display: block;
-    padding-right: 150px;
+    /* padding-right: 150px; */
     font-family: neue-haas-grotesk-display, sans-serif;
     font-weight: 500;
     font-size: 36px;
@@ -352,7 +352,7 @@
 
 .sone-about-section--four .sone-about-text-holder {
     width: 26%;
-    margin-left: calc(34% + 100px);
+    margin-left: 30dvw;
 }
 
 .sone-about-img-5 {
