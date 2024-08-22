@@ -30,6 +30,10 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .sone-projects-item--letter {
+        display: none;
+    }
+    
     .sone-projects-wrapper {
         display: block;
         padding-bottom: 40px;
@@ -71,6 +75,7 @@
 .sone-projects-item--letter .sone-projects-item-content h3 {
     font-size: 120px;
     font-weight: 700;
+    text-transform: none;
 }
 
 .sone-projects-item--letter .sone-projects-item-content h3 {

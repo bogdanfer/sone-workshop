@@ -51,7 +51,11 @@
   font-family: neue-haas-grotesk-display, sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 80px;
+  /* font-size: 80px; */
+
+  /* adaptive font-size */
+  font-size: clamp(2rem, 6.25vw, 8rem);
+
   line-height: 100%;
   letter-spacing: -1px;
   text-decoration: none;

@@ -26,8 +26,8 @@ const Projects = ({ projectsData, slogan }) => {
     const [ showMobileFilter, setShowMobileFilter ] = useState(false);
 
     const mainFilters = [
-        "Typology",
-        "Chronological",
+        // "Typology",
+        // "Chronological",
         "Random",
         "Index"
     ];
@@ -156,7 +156,7 @@ const Projects = ({ projectsData, slogan }) => {
     );
 
     // Define the positions for each letter relative to the project blocks
-    const blockPositions = { S: 2, Ō: 3, N: 4, E: 9 };
+    const blockPositions = { s: 2, Ō: 3, n: 4, e: 9 };
     
     const itemsWithBlocks = [];
     const numProjects = projects.length;

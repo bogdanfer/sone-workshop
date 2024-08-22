@@ -4,6 +4,9 @@ import Link from 'next/link';
 
 const Header = ({ slogan, onLogoHover, variant, size, isProject }) => {
     const [ showExcerpt, setShowExcerpt ] = useState(false);
+    const [ tempHideIfSlogan, setTempHideIfSlogan ] = useState(false);
+    const [ isMenuOpen, setMenuOpen ] = useState(false);
+
     const toggleMenu = (menuState) => {
       onLogoHover(menuState, false)
     }
@@ -22,12 +25,14 @@ const Header = ({ slogan, onLogoHover, variant, size, isProject }) => {
                 if (slogan) {
                   onLogoHover(true, true)
                   setShowExcerpt(true)
+                  setTempHideIfSlogan(true)
                 }
               }} 
               onMouseLeave={() => {
                 if (slogan) {
-                  onLogoHover(false, false)
+                  onLogoHover(isMenuOpen, false)
                   setShowExcerpt(false)
+                  setTempHideIfSlogan(false)
                 }
               }} 
             >
@@ -38,7 +43,15 @@ const Header = ({ slogan, onLogoHover, variant, size, isProject }) => {
           }
         </ul>
 
-        <Menu slogan={slogan} showExcerpt={showExcerpt} toggleMenu={toggleMenu} variant={variant} />
+        <Menu
+          slogan={slogan}
+          showExcerpt={showExcerpt}
+          toggleMenu={toggleMenu}
+          variant={variant}
+          tempHideIfSlogan={tempHideIfSlogan}
+          isMenuOpen={isMenuOpen}
+          setMenuOpen={setMenuOpen}
+        />
       </nav>
     </header>
   );

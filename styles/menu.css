@@ -131,10 +131,14 @@
 }
 
 .contact-link:hover {
-    color: #fff;
+    color: rgba(0,0,0,0.5);
 }
 
 @media only screen and (max-width: 600px) {
+    .contact-link:hover {
+        color: rgba(0,0,0,1);
+    }
+
     .sone-menu-content--left {
         margin-top: 20px;
         order: 2;
@@ -231,7 +235,7 @@
     font-style: normal;
     font-size: 14px;
     line-height: 18px;
-    color: #000;
+    color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     -webkit-font-smoothing: antialiased;

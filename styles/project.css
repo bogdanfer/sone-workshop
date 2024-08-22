@@ -24,6 +24,10 @@
     overflow: scroll;
 }
 
+.sone-project-content--left::-webkit-scrollbar {
+    display: none;
+  }
+
 .sone-project-content--left img {
     margin-bottom: 25px;
 }

@@ -5,20 +5,19 @@ import LocaleSwitcher from '../LocaleSwitcher/LocaleSwitcher';
 
 import styles from './Menu.module.css'
 
-const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
-    const [ isMenuOpen, setMenuOpen ] = useState(false);
+const Menu = ({ slogan, showExcerpt, toggleMenu, variant, tempHideIfSlogan=false, isMenuOpen, setMenuOpen }) => {
     const menuItems = [
+        // {
+        //     "title": "Home",
+        //     "link": "/"
+        // },
         {
-            "title": "Home",
-            "link": "/"
+            "title": "About",
+            "link": "/about"
         },
         {
             "title": "Projects",
             "link": "/projects"
-        },
-        {
-            "title": "About",
-            "link": "/about"
         },
         {
             "title": "Contact",
@@ -49,7 +48,7 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
             </div>
 
             {/* Menu Content */}
-            <div className='sone-menu-content' data-visible={isMenuOpen} data-variant={variant}>
+            <div className='sone-menu-content' data-visible={isMenuOpen && !tempHideIfSlogan} data-variant={variant}>
                 {/* Menu Content - Left */}
                 <div className='sone-menu-content--left'>
                     <h5>
@@ -82,9 +81,9 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant }) => {
             </div>
 
             {/* Locale Switcher */}
-            {isMenuOpen &&
+            {/* {isMenuOpen &&
                 <LocaleSwitcher variant={variant} />
-            }
+            } */}
 
             {/* slogan */}
             <h1 className={headlineClasses} data-variant={variant}>

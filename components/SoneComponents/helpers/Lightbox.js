@@ -15,14 +15,15 @@ const Lightbox = ({ images }) => {
   };
 
   const goToPrevious = () => {
-    setCurrentIndex((currentIndex - 1 + images.length) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   const goToNext = () => {
-    setCurrentIndex((currentIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
-
+  
   const handleKeyDown = (event) => {
+    console.log(event)
     if (event.key === 'ArrowLeft') {
       goToPrevious();
     } else if (event.key === 'ArrowRight') {

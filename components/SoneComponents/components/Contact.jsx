@@ -170,13 +170,12 @@ const Contact = ({ contactData, slogan }) => {
 
                             <div className="sone-contact-sidebar">
                                 <div>
-                                    <span>Get in touch</span>
+                                    <span>CONNECT WITH US</span>
                                     <a className="contact-link" href="mailto:contact@soneworkshop.com">contact@soneworkshop.com</a>
-                                    <a className="contact-link" href="tel:+33157840051">+33157840051</a>
                                 </div>
 
                                 <div>
-                                    <span>Get in touch</span>
+                                    <span>CONNECT WITH US</span>
                                     <a className="contact-link" href="https://google.com" target="_blank">LinkedIn</a>
                                     <a className="contact-link" href="https://google.com" target="_blank">Instagram</a>
                                     <a className="contact-link" href="https://google.com" target="_blank">Pinterest</a>

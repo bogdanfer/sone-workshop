@@ -40,7 +40,14 @@ const HomeComponent = (data) => {
       <div className={styles.SoneHome}>
         {/* random background video from array */}
         {videos &&
-          <video className={videoClasses} muted loop playsInline autoPlay>
+          <video 
+            className={videoClasses} 
+            muted 
+            loop 
+            playsInline 
+            autoPlay
+            onCanPlayThrough={(e) => e.target.play()} // Ensures the video plays once it's loaded
+          >
             <source src={tryGetFileAsset(videos[getRandomInt(videos.length)], myConfiguredSanityClient.config()).url} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
