@@ -413,11 +413,11 @@
 
     .sone-mobile-filter-menu {
         position: absolute;
-        top: 32px;
+        top: 28px;
         right: 100px;
         display: block;
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         padding: 0;
         border: 0;
         background: transparent;
@@ -449,11 +449,11 @@
     }
 
     .sone-mobile-filter-menu span::before {
-        transform: translate3d(0,-18px,0);
+        transform: translate3d(0,-13px,0);
     }
     
     .sone-mobile-filter-menu span::after {
-        transform: translate3d(0,14px,0);
+        transform: translate3d(0,10px,0);
     }
 
     .sone-mobile-filter-menu[data-open="false"] + .sone-main-filters {

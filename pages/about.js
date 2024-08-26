@@ -3,7 +3,7 @@ import sanity from "@lib/sanity";
 import SmoothScrolling from "@components/SoneComponents/components/SmoothScrolling";
 
 const AboutPage = ({ pageData, headerData }) => {
-  return <About aboutData={pageData} slogan={headerData.headlines}/>;
+  return <SmoothScrolling><About aboutData={pageData} slogan={headerData.headlines}/></SmoothScrolling>;
 };
 
 export default AboutPage;

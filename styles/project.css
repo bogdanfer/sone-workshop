@@ -28,7 +28,7 @@
     display: none;
   }
 
-.sone-project-content--left img {
+.sone-project-content--left .thumbnail {
     margin-bottom: 25px;
 }
 

@@ -17,6 +17,7 @@ const Project = ({ projectData, slogan, allProjects }) => {
 
     useEffect(() => {
         setImagesList(projectData?.projectImages);
+        console.log(projectData?.projectImages);
     }, [projectData]);
 
     const scrollRef = useRef(null);

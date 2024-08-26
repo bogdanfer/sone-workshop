@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
 const Lightbox = ({ images }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const videoRefs = useRef([]);
 
   const openLightbox = (index) => {
     setCurrentIndex(index);
@@ -15,15 +16,30 @@ const Lightbox = ({ images }) => {
   };
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    const lightboxImage = document.querySelector('.lightbox-image, .lightbox-video');
+    if (lightboxImage) {
+      lightboxImage.classList.add('fade-out');
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+        lightboxImage.classList.remove('fade-out');
+        lightboxImage.classList.add('fade-in');
+      }, 300); // Duration of the fade-out effect
+    }
   };
   
+  const goToNext = () => {
+    const lightboxImage = document.querySelector('.lightbox-image, .lightbox-video');
+    if (lightboxImage) {
+      lightboxImage.classList.add('fade-out');
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        lightboxImage.classList.remove('fade-out');
+        lightboxImage.classList.add('fade-in');
+      }, 300); // Duration of the fade-out effect
+    }
+  };
+
   const handleKeyDown = (event) => {
-    console.log(event)
     if (event.key === 'ArrowLeft') {
       goToPrevious();
     } else if (event.key === 'ArrowRight') {
@@ -52,16 +68,57 @@ const Lightbox = ({ images }) => {
     trackMouse: true,
   });
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.play();
+          } else {
+            entry.target.pause();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        observer.observe(video);
+      }
+    });
+
+    return () => {
+      videoRefs.current.forEach((video) => {
+        if (video) {
+          observer.unobserve(video);
+        }
+      });
+    };
+  }, [images]);
+
   return (
     <>
       {images && images.map((image, index) => (
-        <img
-          key={index}
-          src={image.fileUrl}
-          alt={image.description}
-          onClick={() => openLightbox(index)}
-          className="thumbnail"
-        />
+        image.extension === 'mp4' ? (
+          <video
+            className="thumbnail"
+            key={index}
+            controls
+            muted
+            ref={(el) => (videoRefs.current[index] = el)}
+          >
+            <source src={image.fileUrl} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            key={index}
+            src={image.fileUrl}
+            alt={image.description}
+            onClick={() => openLightbox(index)}
+            className="thumbnail"
+          />
+        )
       ))}
 
       {isOpen && (
@@ -78,7 +135,24 @@ const Lightbox = ({ images }) => {
             </svg>
           </button>
           <div className='div-white'></div>
-          <img onClick={closeLightbox} src={images[currentIndex].fileUrl} alt={images[currentIndex].description} className="lightbox-image" />
+          {images[currentIndex].extension === 'mp4' ? (
+            <video
+              className="lightbox-video"
+              controls
+              autoPlay
+              muted
+              ref={(el) => (videoRefs.current[currentIndex] = el)}
+            >
+              <source src={images[currentIndex].fileUrl} type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              onClick={closeLightbox}
+              src={images[currentIndex].fileUrl}
+              alt={images[currentIndex].description}
+              className="lightbox-image"
+            />
+          )}
         </div>
       )}
     </>

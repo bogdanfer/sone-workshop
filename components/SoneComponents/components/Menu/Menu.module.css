@@ -42,12 +42,16 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .SoneMenuButton {
+        height: 30px;
+    }
+
     .SoneMenuButtonLine {
-        width: 40px;
-        height: 4px;
+        width: 30px;
+        height: 3px;
     }
 
     .SoneMenuButtonLine + .SoneMenuButtonLine {
-        margin-left: -40px;
+        margin-left: -30px;
     }
 }

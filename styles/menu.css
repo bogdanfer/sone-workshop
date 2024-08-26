@@ -31,7 +31,7 @@
     .header-nav {
         flex-direction: column;
         align-items: center;
-        height: 100%;
+        height: calc(100dvh - 25px);
     }
 
     .header-wrapper ul {
