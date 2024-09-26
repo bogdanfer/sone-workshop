@@ -686,6 +686,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: calc(100dvh - 250px);
     padding: 100px 0 150px;
     background: #DAD3C2;
 }
@@ -702,7 +703,7 @@
 
 @media only screen and (max-width: 600px) {
     .sone-about-section--ten {
-        height: calc(100dvh - 60px);
+        height: calc(100dvh - 40px);
         padding: 30px 0;
     }
 

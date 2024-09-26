@@ -105,7 +105,7 @@ const Project = ({ projectData, slogan, allProjects }) => {
                                 <p className='sone-project-description'>
                                     {projectData?.description}
                                 </p>
-                                <ul className='sone-project-extras'>
+                                <ul className='sone-project-extras sone-project-extras--desktop'>
                                     {projectData?.details.map((item, index) => (
                                         <li key={index}>
                                             <span>{item.title}</span>
@@ -138,6 +138,14 @@ const Project = ({ projectData, slogan, allProjects }) => {
 
                     {isMobile &&
                         <>
+                            <ul className='sone-project-extras sone-project-extras--mobile' data-extra={showExtras}>
+                                {projectData?.details.map((item, index) => (
+                                    <li key={index}>
+                                        <span>{item.title}</span>
+                                        <span>{item.value}</span>
+                                    </li>
+                                ))}
+                            </ul>
                             <div className='sone-project-content--left sone-project-content--left-second' ref={scrollRef}>
                                 <Lightbox images={imagesList?.slice(1)} />
                             </div>
