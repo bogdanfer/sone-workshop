@@ -106,6 +106,7 @@ const Lightbox = ({ images }) => {
             key={index}
             controls
             muted
+            playsInline={true}
             ref={(el) => (videoRefs.current[index] = el)}
           >
             <source src={image.fileUrl} type="video/mp4" />
@@ -141,6 +142,7 @@ const Lightbox = ({ images }) => {
               controls
               autoPlay
               muted
+              playsInline={true}
               ref={(el) => (videoRefs.current[currentIndex] = el)}
             >
               <source src={images[currentIndex].fileUrl} type="video/mp4" />

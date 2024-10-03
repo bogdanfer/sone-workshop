@@ -254,6 +254,7 @@
     .sone-project-extras--mobile {
         display: none;
         margin-top: -50px;
+        margin-bottom: 20px;
         padding: 0 25px;
     }
 
