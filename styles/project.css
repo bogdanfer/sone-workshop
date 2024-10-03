@@ -74,9 +74,9 @@
     }
 
     .sone-project-content--right {
-        width: calc(100% - 50px);
+        width: calc(100% - 40px);
         margin-top: 25px;
-        padding: 0 25px;
+        padding: 0 20px;
     }
 
     .sone-project-content--left-second {
@@ -96,6 +96,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+@media only screen and (max-width: 600px) {
+    .sone-project-title {
+        font-size: 18px;
+    }
+}
+
 .sone-project-concept {
     margin-top: 50px;
     font-family: neue-haas-grotesk-display, sans-serif;
@@ -106,6 +112,13 @@
     text-decoration: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+@media only screen and (max-width: 600px) {
+    .sone-project-concept {
+        font-size: 18px;
+        margin-top: 6px;
+    }
 }
 
 .sone-project-description {
@@ -158,6 +171,12 @@
 .sone-project-content-area {
     position: relative;
     margin-top: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    .sone-project-content-area {
+        margin-top: 30px;
+    }
 }
 
 .sone-project-content-area p,
