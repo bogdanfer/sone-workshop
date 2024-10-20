@@ -81,9 +81,9 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant, tempHideIfSlogan=false
             </div>
 
             {/* Locale Switcher */}
-            {/* {isMenuOpen &&
+            {isMenuOpen &&
                 <LocaleSwitcher variant={variant} />
-            } */}
+            }
 
             {/* slogan */}
             <h1 className={headlineClasses} data-variant={variant}>

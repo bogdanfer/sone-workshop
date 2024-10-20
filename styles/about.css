@@ -352,7 +352,7 @@
 
 .sone-about-section--four .sone-about-text-holder {
     width: 26%;
-    margin-left: 30dvw;
+    /*margin-left: 30dvw;*/
 }
 
 .sone-about-img-5 {
@@ -689,6 +689,11 @@
     height: calc(100dvh - 250px);
     padding: 100px 0 150px;
     background: #DAD3C2;
+}
+
+.sone-about-section--ten svg {
+    display: block;
+    max-height: calc(100dvh - 250px);
 }
   
 .sliding-image {
