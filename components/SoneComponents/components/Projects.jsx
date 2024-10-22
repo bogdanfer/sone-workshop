@@ -5,6 +5,19 @@ import Link from 'next/link';
 import useMobileDetect from '../helpers/useMobileDetect';
 import ScrollProgressBar from '../helpers/ScrollProgressBar';
 
+// Letters SVGs
+import S from './SVGs/S';
+import O from './SVGs/O';
+import N from './SVGs/N';
+import E from './SVGs/E';
+
+const svgMapping = {
+    s: S,
+    o: O,
+    n: N,
+    e: E,
+};
+
 const Projects = ({ projectsData, slogan }) => {
     // states
     const [ isImgBlur, setIsImgBlur ] = useState(false);
@@ -145,18 +158,21 @@ const Projects = ({ projectsData, slogan }) => {
     }
 
     // Letters 
-    const Block = ({ letter }) => (
-        <div className="sone-projects-item sone-projects-item--letter">
-          <div className="sone-projects-item-content">
-            <Link href={"/workshop"}>
-                <h3>{letter}</h3>
-            </Link>
-          </div>
-        </div>
-    );
+    const Block = ({ letter }) => {
+        const SvgComponent = svgMapping[letter.toLowerCase()];
+        return (
+            <div className="sone-projects-item sone-projects-item--letter">
+                <div className="sone-projects-item-content">
+                    <Link href={"/workshop"}>
+                        <h3>{SvgComponent && <SvgComponent />}</h3>
+                    </Link>
+                </div>
+            </div>
+        );
+    };
 
     // Define the positions for each letter relative to the project blocks
-    const blockPositions = { s: 2, Ō: 3, n: 4, e: 9 };
+    const blockPositions = { s: 2, o: 3, n: 4, e: 7 };
     
     const itemsWithBlocks = [];
     const numProjects = projects.length;

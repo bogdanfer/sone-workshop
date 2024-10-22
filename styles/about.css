@@ -70,10 +70,10 @@
 
 .sone-about-sticky-wrapper .sone-letter-o {
     position: sticky;
-    top: 20dvh;
+    top: 5dvh;
     bottom: 0;
-    height: 50vh;
-    margin-bottom: 40vh;
+    height: 50dvh;
+    margin-bottom: 40dvh;
     transform: translate3d(0,200px,0);
     z-index: 3;
 }
