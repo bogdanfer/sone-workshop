@@ -55,7 +55,7 @@
 }
 
 .sone-letter-o {
-    margin-right: -75px;
+    margin-right: -5px;
     transition: all 0.3s ease;
 }
 
@@ -73,7 +73,7 @@
     top: 5dvh;
     bottom: 0;
     height: 50dvh;
-    margin-bottom: 40dvh;
+    margin-bottom: 45dvh;
     transform: translate3d(0,200px,0);
     z-index: 3;
 }

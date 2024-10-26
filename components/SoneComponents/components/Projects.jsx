@@ -161,7 +161,7 @@ const Projects = ({ projectsData, slogan }) => {
     const Block = ({ letter }) => {
         const SvgComponent = svgMapping[letter.toLowerCase()];
         return (
-            <div className="sone-projects-item sone-projects-item--letter">
+            <div className="sone-projects-item sone-projects-item--letter" data-large={letter === "o"}>
                 <div className="sone-projects-item-content">
                     <Link href={"/workshop"}>
                         <h3>{SvgComponent && <SvgComponent />}</h3>

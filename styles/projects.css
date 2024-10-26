@@ -83,6 +83,10 @@
     width: 60px;
 }
 
+.sone-projects-item--letter[data-large="true"] .sone-projects-item-content svg {
+    width: 80px;
+}
+
 .sone-projects-item--letter .sone-projects-item-content h3 {
     transition: opacity 0.3s ease;
 }
