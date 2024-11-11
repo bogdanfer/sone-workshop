@@ -7,10 +7,8 @@ const ProjectsPage = ({ pageData, headerData }) => {
 
 export default ProjectsPage;
 
-export async function getStaticProps({ params, locale }) {
-    // const { slug } = params;
-    // const [type] = slug;
-  
+export async function getStaticProps({ locale }) {
+
     const query = `*[_type == "projectsPage" && language == "${locale}"] {
       _id,
       _type,
@@ -43,8 +41,6 @@ export async function getStaticProps({ params, locale }) {
     `
     const pageData = await sanity.fetch(query);
 
-    // console.log("projects data: ", pageData)
-
     // header query 
     const query_header = `*[_type == "welcome" && language == "${locale}"] {
       _id,
@@ -65,5 +61,6 @@ export async function getStaticProps({ params, locale }) {
         pageData,
         headerData,
       },
+        revalidate: 60
     };
   }
