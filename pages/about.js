@@ -8,10 +8,8 @@ const AboutPage = ({ pageData, headerData }) => {
 
 export default AboutPage;
 
-export async function getStaticProps({ params, locale }) {
-    // const { slug } = params;
-    // const [type] = slug;
-  
+export async function getStaticProps({ locale }) {
+
     const query = `*[_type == "about" && language == "${locale}"] {
       _id,
       _type,
@@ -46,5 +44,6 @@ export async function getStaticProps({ params, locale }) {
         pageData,
         headerData,
       },
+        revalidate: 60
     };
   }
