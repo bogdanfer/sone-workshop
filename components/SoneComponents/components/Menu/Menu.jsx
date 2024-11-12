@@ -1,16 +1,15 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
+import { useRouter } from 'next/router'
 import classNames from 'classnames';
 import LocaleSwitcher from '../LocaleSwitcher/LocaleSwitcher';
 
 import styles from './Menu.module.css'
 
 const Menu = ({ slogan, showExcerpt, toggleMenu, variant, tempHideIfSlogan=false, isMenuOpen, setMenuOpen }) => {
+    let currentMenu;
+
     const menuItems = [
-        // {
-        //     "title": "Home",
-        //     "link": "/"
-        // },
         {
             "title": "About",
             "link": "/about"
@@ -28,6 +27,32 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant, tempHideIfSlogan=false
             "link": "/workshop"
         }
     ]
+
+    const menuItemsFr = [
+        {
+            "title": "Nous",
+            "link": "/about"
+        },
+        {
+            "title": "Projets",
+            "link": "/projects"
+        },
+        {
+            "title": "Contact",
+            "link": "/contact"
+        },
+        {
+            "title": "Atelier",
+            "link": "/workshop"
+        }
+    ]
+
+    const currentLocale = useRouter().locale;
+    if (currentLocale === 'fr') {
+        currentMenu = menuItemsFr;
+    } else {
+        currentMenu = menuItems;
+    }
 
     const headlineClasses = classNames("sone-menu-headline", {
         ['sone-menu-headline--fadein']: showExcerpt
@@ -62,7 +87,7 @@ const Menu = ({ slogan, showExcerpt, toggleMenu, variant, tempHideIfSlogan=false
                 {/* Menu Content - Right */}
                 <div className='sone-menu-content--right'>
                     <ul>
-                        {menuItems.map((item, index) => {
+                        {currentMenu.map((item, index) => {
                             return (
                                 <li key={index}>
                                     <Link className='sone-caps-text-large' style={{ '--animation-order': index+1 }} href={item.link}>

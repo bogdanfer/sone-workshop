@@ -10,6 +10,7 @@ import Lightbox from '../helpers/Lightbox';
 
 const Project = ({ projectData, slogan, allProjects }) => {
     const router = useRouter();
+    const currentLocale = useRouter().locale;
 
     // Infinite image gallery
     const [ imagesList, setImagesList ] = useState([]);
@@ -126,11 +127,11 @@ const Project = ({ projectData, slogan, allProjects }) => {
 
                             <div className='sone-project-nav'>
                                 {prevSlug &&
-                                    <Link href={prevSlug}>Previous Project</Link>
+                                    <Link href={prevSlug}>{currentLocale === 'en' ? 'Previous Project' : 'Projet Précédent'}</Link>
                                 }
                                 
                                 {nextSlug &&
-                                    <Link href={nextSlug}>Next Project</Link>
+                                    <Link href={nextSlug}>{currentLocale === 'en' ? 'Next Project' : 'Projet Suivant'}</Link>
                                 }
                             </div>
                         </div>
