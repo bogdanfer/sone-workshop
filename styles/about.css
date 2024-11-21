@@ -171,6 +171,7 @@
     text-decoration: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    white-space: pre-line;
 }
 
 @media only screen and (max-width: 600px) {

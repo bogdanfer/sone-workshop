@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import myConfiguredSanityClient from "@lib/sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import classNames from 'classnames';
 import Header from './Header/Header';
 import useMobileDetect from '../helpers/useMobileDetect';
 import ScrollProgressBar from '../helpers/ScrollProgressBar';
+import about from "@pages/about";
 
 const About = ({ aboutData, slogan }) => {
+
+    console.log("Data: ", aboutData);
+
     // states
     const [ isImgBlur, setIsImgBlur ] = useState(false);
     const isMobile = useMobileDetect();
@@ -104,7 +108,7 @@ const About = ({ aboutData, slogan }) => {
 
                       {/* 1.Section */}
                       <div className='sone-about-section sone-about-section-one'>
-                        <h3>Building local narratives in global stories</h3>
+                        <h3>{ aboutData.headline }</h3>
                         <img className='sone-about-img-1 sliding-image' src={backgroundImage ? backgroundImage : ''} alt="" />
                       </div>
 
@@ -112,10 +116,8 @@ const About = ({ aboutData, slogan }) => {
                       <div className='sone-about-section sone-about-section-two'>
                         <img className='sone-about-img-2 sliding-image sliding-image--left' src={backgroundImage ? backgroundImage : ''} alt="" />
                         <div className='sone-about-text-holder'>
-                          <h4><strong>sŌne</strong> is an architecture practice based in Yangon and Paris.</h4>
-                          <p>Our approach is grounded in a commitment to impactful architecture, woven into space and time through a sustainable ecological, technical, and social lens. Each project is an opportunity to embody and preserve the singularity and diversity of the physical territories and cultural expressions it engages with. By exploring the margins and engaging with global peripheries, we aim to produce architectures and objects conceived as spaces of representation, struggle, and expression.
-                          <br /><br /> 
-                          As a result of a South-North collaboration, inherently multicultural and purposefully interdisciplinary, the workshop becomes a space for experimentation and reflection on inhabited environments. We work with communities, mobilizing the tools of architecture and documentary to envision fertile spaces that foster transformation towards sustainable cities.</p>
+                          <h4>{ aboutData.section1title }</h4>
+                          <p>{ aboutData.section1text }</p>
                         </div>
                       </div>
 
@@ -124,7 +126,7 @@ const About = ({ aboutData, slogan }) => {
 
                         {/* 3.Section */}
                         <div className='sone-about-section sone-about-section--three' lang="en">
-                          <h3>Towards a sustainable Architecture</h3>
+                          <h3>{ aboutData.section2headline }</h3>
                           <img className='sone-about-img-3 sliding-image' src={backgroundImage ? backgroundImage : ''} alt="" />
                         </div>
 
@@ -133,10 +135,8 @@ const About = ({ aboutData, slogan }) => {
                           <img className='sone-about-img-4 sliding-image sliding-image--left' src={backgroundImage ? backgroundImage : ''} alt="" />
 
                           <div className='sone-about-text-holder'>
-                            <h4><b>sŌne</b> commits to a post-carbon built environment.</h4>
-                            <p>Because the imperative shift to post-carbon cities can only be achieved through the responsible use of resources, we focus our practice on transforming the existing built environment and continually exploring innovative and sustainable building methods.
-                            <br /><br /> 
-                            Working across various climates, we implement low-tech and bioclimatic principles to craft buildings that are both efficient and low-carbon. We prioritize the use of regional know-how and materials to enhance local expertise and minimize project-generated emissions.</p>
+                            <h4>{ aboutData.section2title }</h4>
+                            <p>{ aboutData.section2text }</p>
                           </div>
 
                           <img className='sone-about-img-5 sliding-image' src={backgroundImage ? backgroundImage : ''} alt="" />
@@ -146,16 +146,14 @@ const About = ({ aboutData, slogan }) => {
 
                         {/* 5.Section */}
                         <div className='sone-about-section sone-about-section--five'>
-                          <h3>Off-Track Projects for Public Interest</h3>
+                          <h3>{ aboutData.section5headline }</h3>
                         </div>
 
                         {/* 6.Section */}
                         <div className='sone-about-section sone-about-section--six'>
                           <div className='sone-about-text-holder'>
-                            <h4><b>sŌne</b> commits to a post-carbon built environment.</h4>
-                            <p>Because the imperative shift to post-carbon cities can only be achieved through the responsible use of resources, we focus our practice on transforming the existing built environment and continually exploring innovative and sustainable building methods.
-                            <br /><br /> 
-                            Working across various climates, we implement low-tech and bioclimatic principles to craft buildings that are both efficient and low-carbon. We prioritize the use of regional know-how and materials to enhance local expertise and minimize project-generated emissions.</p>
+                            <h4>{ aboutData.section5title }</h4>
+                            <p>{ aboutData.section5text }</p>
                           </div>
 
                           <img className='sone-about-img-6 sliding-image' src={backgroundImage ? backgroundImage : ''} alt="" />
@@ -169,7 +167,7 @@ const About = ({ aboutData, slogan }) => {
                         {/* 8.Section */}
                         <div className='sone-about-section sone-about-section--eight'>
                           <div className='sone-about-section-people--left'>
-                            <h3>People</h3>
+                            <h3>{ aboutData.section4headline }</h3>
                             {/* SVG */}
                             <svg width="302" height="300" viewBox="0 0 302 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <g id="Asset 4 1" clipPath="url(#clip0_614_414)">
@@ -247,37 +245,33 @@ const About = ({ aboutData, slogan }) => {
                             </svg>
                             {/* SVG:end*/}
 
-                            <p><b>sŌne</b> is an award-winning studio recognized as one of the Europe 2024 40under40 best emerging young Architects & Designers in Europe. 
-                            
-                            Founded by Kathy Khine and François Le Pivain, our team is composed of profiles from different backgrounds, bringing multidisciplinary expertise and traversale approach. 
-                            
-                            Our offices are located in Yangon and Paris.</p>
+                            <p>{ aboutData.section4title }</p>
                           </div>
 
                           <div className='sone-about-section-people--right'>
                             <div className='sone-about-section-people-block'>
-                              <h5>François Le Pivain</h5>
-                              <h6>architect - co founder</h6>
+                              <h5>{ aboutData.section4team1name }</h5>
+                              <h6>{ aboutData.section4team1role }</h6>
 
-                              <p>Graduate from l’Ecole Spéciale d’Architecture, Paris France Master degree at Tulane University, New Orléans, United State of America Architecture teacher at ESA Paris and ENSA Paris Est Registered architect at the French Architects Board</p>
+                              <p>{ aboutData.section4team1description }</p>
 
-                              <span><b>sŌne</b> workshop Paris</span>
+                              <span>{ aboutData.section4team1location }</span>
                             </div>
 
-                            <div className='sone-about-section-people-block'>
-                              <h5>Kathy Khine</h5>
-                              <h6>spatial designer - co founder</h6>
+                              <div className='sone-about-section-people-block'>
+                                  <h5>{aboutData.section4team2name}</h5>
+                                  <h6>{aboutData.section4team2role}</h6>
 
-                              <p>Spatial design and Applied Arts at Ecole Boule, Paris, France Interior design at ZK School of Design, Yangon, Myanmar Research member of Southeast Asia Neighborhood Network (SEANNET)</p>
+                                  <p>{aboutData.section4team2description}</p>
 
-                              <span><b>sŌne</b> workshop Yangon</span>
-                            </div>
+                                  <span>{aboutData.section4team2location}</span>
+                              </div>
                           </div>
                         </div>
 
-                        {/* 9.Section */}
-                        <div className='sone-about-section sone-about-section--nine'>
-                          <img className='sone-about-img-7' src={backgroundImage ? backgroundImage : ''} alt="" />
+                          {/* 9.Section */}
+                          <div className='sone-about-section sone-about-section--nine'>
+                              <img className='sone-about-img-7' src={backgroundImage ? backgroundImage : ''} alt="" />
                           <svg className="sone-letter-o" fill="none" viewBox="0 0 41 50"><path d="M34.65 44.03C30.98 48.01 26.11 50 20.05 50c-6.06 0-10.92-1.99-14.57-5.97C1.82 40.05 0 34.98 0 28.8s1.83-11.25 5.48-15.23C9.13 9.59 13.99 7.6 20.05 7.6c6.06 0 10.93 1.99 14.6 5.97 3.67 3.98 5.51 9.05 5.51 15.23s-1.84 11.25-5.51 15.23ZM20.1 41.81c3.18 0 5.61-1.2 7.3-3.61 1.69-2.41 2.53-5.54 2.53-9.4 0-3.86-.84-7.01-2.53-9.43s-4.12-3.64-7.3-3.64c-3.18 0-5.58 1.21-7.3 3.64-1.72 2.42-2.59 5.57-2.59 9.43 0 3.86.86 6.95 2.59 9.38 1.72 2.42 4.16 3.64 7.3 3.64v-.01ZM11.92 5.74V0h16.25v5.74H11.92Z" fill="#fff"/></svg>
                         </div>
                       </div>
