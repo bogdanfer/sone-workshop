@@ -1,6 +1,5 @@
 import sanity from '../lib/sanity'
 import { HomeComponent } from '../components'
-import { useRouter } from 'next/router'
 
 
 import { NextSeo } from 'next-seo'
@@ -12,13 +11,7 @@ import { NextSeo } from 'next-seo'
 
 
 
-const MeLlamoArtPage = ({
-  // profile,
-  // ogImage,
-  // ogTitle,
-  // ogUrl,
-  sanityData,
-}) => {
+const SonePage = ({ sanityData, ogTitle, ogUrl }) => {
 
   // console.log("sanityData: ", sanityData)
 
@@ -29,9 +22,9 @@ const MeLlamoArtPage = ({
         title="sŌne | Building Workshop"
         description="sŌne | Building Workshop"
         openGraph={{
-          // url: ogUrl,
-          // title: ogTitle,
-          description: "sŌne | Building Workshop",
+          url: ogUrl,
+          title: ogTitle,
+          description: "architecture workshop based in Paris and Yangon founded by François Le Pivain and Kathy Khine",
           // images: [
           //   {
           //     url: ogImage,
@@ -46,14 +39,14 @@ const MeLlamoArtPage = ({
   )
 }
 
-export default MeLlamoArtPage
+export default SonePage
 
 export async function getStaticProps({ locale }) {
   // let user = {}
   let profile = {}
   let ogUrl = ''
   let ogImage = '/social_home_new.png'
-  let ogTitle = 'Me Llamo Art'
+  let ogTitle = 'sŌne | Building Workshop'
 
   // this query is all placeholder for now
   const query = `*[_type == "welcome" && language == "${locale}"] {
